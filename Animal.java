@@ -13,7 +13,7 @@ abstract public class Animal{
 	id = "Inconnue";
 	poids = 0;
 	sexe = "Inconnu";
-	etat = "inconnu";
+	statut = "inconnu";
     }
 
     public Animal(String chaine, int nb, String sx, String viv) {
@@ -21,7 +21,7 @@ abstract public class Animal{
 	id = chaine;
 	poids = nb;
 	sexe = sx;
-	etat = viv;
+	statut = viv;
     }
 
 
