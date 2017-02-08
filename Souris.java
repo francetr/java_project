@@ -9,6 +9,7 @@ public class Souris extends Animal{
     }
 
     public void affiche(){	
+    	System.out.println("----Souris----");	
 	super.affiche();
     }
 }
