@@ -4,3 +4,8 @@
 - 2 classes filles héritant d'animal (Souris et Singe)
 - 1 classe expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
 - 3 interface suivant test effectué (Labyrinthe, Nourriture et Image)
+
+Rapport
+ - Analyse (ce qu'on veut obtenir)
+ - Conception (comment l'obtenir)
+ - Résultat (ce qu'on a obtenu)
