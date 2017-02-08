@@ -6,20 +6,23 @@ abstract public class Animal{
     protected int poids;
     protected char sexe;
     protected String vivant;
-    public static int num = 0;
+    protected int num =0;
+    public static int numOrdre = 0;
 
     public Animal() {
-	num++;
+	numOrdre++;
+	num = numOrdre;
 	id = "Inconnue";
 	poids = 0;
 	sexe = 'A';
 	vivant = "vivant";
     }
 
-    public Animal(String chaine, int nb, char sx) {
-	num++;
+    public Animal(String chaine, int nombre, char sx) {
+	numOrdre++;
+	num = numOrdre;
 	id = chaine;
-	poids = nb;
+	poids = nombre;
 	sexe = sx;
 	vivant = "vivant";
     }
@@ -41,13 +44,16 @@ abstract public class Animal{
 	return vivant;
     }
 
+    public int getNum(){
+	return num;
+    }
     
     public void setId(String chaine){
 	id = chaine;
     }
 
-    public void setPoids(int nb){
-	poids = nb;
+    public void setPoids(int nombre){
+	poids = nombre;
     }   
 
     public void setSexe(char sx){
@@ -59,6 +65,6 @@ abstract public class Animal{
     }
 
     public void affiche(){	
-	System.out.println("id : " + id + "\npoids : " + poids + "\nsexe : " + sexe + "\nstatut : " + vivant + "\n" );
-    }
+	System.out.println("num : " + num + "\nid : "  + id + "\npoids : " + poids + "\nsexe : " + sexe + "\nstatut : " + vivant + "\n" );
+    }q
 }
