@@ -8,7 +8,8 @@ public class Singe extends Animal{
 	super(chaine, nb, sx);
     }
     
-    public void affiche(){	
+    public void affiche(){
+	System.out.println("----Singe----");	
 	super.affiche();
     }
 }
