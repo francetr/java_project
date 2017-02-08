@@ -17,6 +17,7 @@ public class Gestion{
 	    case 0 : System.exit(0); 
 	    case 1 : ajouterSouris(lesSouris); break;
 	    case 2 : ajouterSinge(lesSinges); break;
+	    case 3 : afficheAnimaux(lesSouris, lesSinges); break;
 	    }
 	}
     }
@@ -89,14 +90,29 @@ public class Gestion{
 	lesAnimaux.add(singe);
 	return lesAnimaux;
     }
+
+    public static void afficheAnimaux(Vector <Souris> lesSouris,Vector <Singe> lesSinges){
+	System.out.println("----Souris----");
+	for(Enumeration e = lesSouris.elements(); e.hasMoreElements();){
+	    Souris item = (Souris) e.nextElement();
+	    item.affiche();
+	}
+
+	System.out.println("\n----Singes----");
+	for(Enumeration e = lesSinges.elements(); e.hasMoreElements();){
+	    Singe item = (Singe) e.nextElement();
+	    item.affiche();
+	}
+    }
     
     
     public static void afficheMenu(){
-	System.out.println("------Menu------\n");
+	System.out.println("\n------Menu------\n");
 	System.out.println("Que voulez vous faire?");
 	System.out.println("Taper 0 pour sortir");
 	System.out.println("Taper 1 pour ajouter une souris");
 	System.out.println("Taper 2 pour ajouter un singe");
+	System.out.println("Taper 3 pour afficher la liste des animaux");
     }
     
     public static String saisie_chaine ()
