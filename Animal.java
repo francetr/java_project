@@ -5,7 +5,7 @@ abstract public class Animal{
     protected String id;
     protected int poids;
     protected char sexe;
-    protected boolean vivant;
+    protected String vivant;
     public static int num = 0;
 
     public Animal() {
@@ -13,7 +13,7 @@ abstract public class Animal{
 	id = "Inconnue";
 	poids = 0;
 	sexe = 'A';
-	vivant = true;
+	vivant = "vivant";
     }
 
     public Animal(String chaine, int nb, char sx) {
@@ -21,7 +21,7 @@ abstract public class Animal{
 	id = chaine;
 	poids = nb;
 	sexe = sx;
-	vivant = true;
+	vivant = "vivant";
     }
 
 
@@ -37,7 +37,7 @@ abstract public class Animal{
 	return sexe;
     }
     
-    public boolean getStatut(){
+    public String getStatut(){
 	return vivant;
     }
 
@@ -54,7 +54,11 @@ abstract public class Animal{
 	sexe = sx;
     }
 
-    public void setStatut(boolean viv){
+    public void setStatut(String viv){
 	vivant = viv;
-    }  
+    }
+
+    public void affiche(){	
+	System.out.println("id : " + id + "\npoids : " + poids + "\nsexe : " + sexe + "\nstatut : " + vivant + "\n" );
+    }
 }
