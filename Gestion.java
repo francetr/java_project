@@ -4,6 +4,9 @@ import java.io.*;
 public class Gestion{
 
     public static void main(String [] arg){
+	/*
+	  Gere tous les choix de l'utilisateur
+	 */
 	Vector <Animal> lesAnimaux = new <Animal> Vector();
 	//Vector <Souris> lesSouris = new <Souris> Vector();
 	//Vector <Singe> lesSinges = new <Singe> Vector();
@@ -65,7 +68,7 @@ public class Gestion{
     
     public static Vector <Animal> ajouterSouris(Vector <Animal> lesSouris)
     /*
-      Permet d'ajouter un objet souris aux vecteurs contenant les animaux
+      Permet d'ajouter un objet souris au vecteur contenant les animaux
     */
     {
 	System.out.println("Donner un nom a la souris");
@@ -89,7 +92,7 @@ public class Gestion{
 
     public static Vector <Animal> ajouterSinge(Vector <Animal> lesSinges){
 	/*
-	 Permet d'ajouter un objet souris aux vecteurs contenant les animaux
+	 Permet d'ajouter un objet singe au vecteur contenant les animaux
 	 */
 	System.out.println("Donner un nom au singe");
 	String nom = saisie_chaine();
@@ -112,6 +115,7 @@ public class Gestion{
 
     public static void afficheAnimaux(Vector <Animal> lesAnimaux){
 	/*
+	  Affiche la liste de tous les animaux
 	  Chercher a afficher selon espèces : affiche sans distinctions
 	 */
 	if (lesAnimaux.size() == 0){
@@ -127,6 +131,9 @@ public class Gestion{
     
     
     public static void afficheMenu(){
+	/*
+	  Affiche a l'utilisateur le menu
+	 */
 	System.out.println("----------------");
 	System.out.println("|     Menu     |");
 	System.out.println("----------------");
