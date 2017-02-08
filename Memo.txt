@@ -1,8 +1,6 @@
-4 classes :
+8 classes :
 - 1 gestion : permettant de piloter les expériences
 - 1 classe mère animal
 - 2 classes filles héritant d'animal (Souris et Singe)
-
-4 interfaces:
-- 1 interface expérience héritant des méthodes de toutes les autres interfaces
+- 1 classe expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
 - 3 interface suivant test effectué (Labyrinthe, Nourriture et Image)
