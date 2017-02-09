@@ -23,7 +23,7 @@ public class Gestion{
 	Souris souris6 = new Souris("souris6", 35, 'M');
 	Souris souris7 = new Souris("souris7", 20, 'F');
 	lesAnimaux.addElement(singe1); lesAnimaux.addElement(souris4); lesAnimaux.addElement(singe2);lesAnimaux.addElement(singe3);lesAnimaux.addElement(singe4); lesAnimaux.addElement(souris1);lesAnimaux.addElement(souris2);lesAnimaux.addElement(souris3);lesAnimaux.addElement(souris5); lesAnimaux.addElement(souris6);lesAnimaux.addElement(souris7);
-	Nourriture nour = new Nourriture();
+
 
 	while (true){
 	    afficheMenu();
@@ -50,19 +50,26 @@ public class Gestion{
 	lab.affiche();
 	Image img2 = new Image(5, "succes");
 	img2.affiche();
-	Nourriture nour1 = new Nourriture(300, "succes");
+	Nourriture nour1 = new Nourriture(2, "succes");
 	nour1.affiche();
+	Nourriture nour2 = new Nourriture(30, "echec");
+	nour2.affiche();
 	return lesExperiences;
     }
 
-    public static void ajouterAnimal(Vector <Animal> lesAnimaux){
-	System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
-	int rep = saisie_entier();
-	switch(rep){
-	case 1 : ajouterSouris(lesAnimaux); break;
-	case 2 : ajouterSinge(lesAnimaux); break;
+    public static void ajouterAnimal(Vector <Animal> lesAnimaux)
+    /*
+      Permet d'ajouter un animal en appelant fonctions ajout souris ou singe selon choix de l'utilisateur 
+    */
+    {
+    
+	    System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
+	    int rep = saisie_entier();
+	    switch(rep){
+	    case 1 : ajouterSouris(lesAnimaux); break;
+	    case 2 : ajouterSinge(lesAnimaux); break;
+	    default : System.out.println("Ajout avorté"); break;
 	}
-	
     }
 
     
@@ -140,7 +147,7 @@ public class Gestion{
 	System.out.println("Que voulez vous faire?");
 	System.out.println("Taper 0 pour sortir");
 	System.out.println("Taper 1 pour ajouter un animal");
-	System.out.println("Taper 2 pour afficher la liste des animaux");
+	System.out.println("Taper 2 pour afficher la liste des animaux présents dans l'étude");
 	System.out.println("Taper 3 pour ajouter une expérience");
     }
     
