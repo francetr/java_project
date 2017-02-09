@@ -3,22 +3,25 @@ import java.util.*;
 abstract public class Animal{
 
     protected String id;
-    protected int poids;
+    protected float poids;
     protected char sexe;
     protected String vivant;
+    protected int numOrdre = 0;
     public static int num = 0;
 
     public Animal() {
 	num++;
+	numOrdre = num;
 	id = "Inconnue";
 	poids = 0;
 	sexe = 'I';
 	vivant = "vivant";
     }
 
-    public Animal(String chaine, int nb, char sx) {
+    public Animal(String chaine, float nb, char sx) {
 	num++;
 	id = chaine;
+	numOrdre = num;
 	poids = nb;
 	sexe = sx;
 	vivant = "vivant";
@@ -29,7 +32,7 @@ abstract public class Animal{
 	return id;
     }
 
-    public int getPoids(){
+    public float getPoids(){
 	return poids;
     }
 
@@ -53,7 +56,7 @@ abstract public class Animal{
 	id = chaine;
     }
 
-    public void setPoids(int nb){
+    public void setPoids(float nb){
 	poids = nb;
     }   
 
