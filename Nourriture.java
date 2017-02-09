@@ -12,18 +12,19 @@ public class Nourriture{
 	numOrdre = num;
     }
 
-    public Nourriture(int tps){
+    public Nourriture(int n , String s){
 	num++;
 	numOrdre = num;
+	nbVisite = n;
+	succes = s;
     }
 
     public int getNbVisite(){
 	return nbVisite;
     }
-   
 
-    public void setNbVisite(int v){
-	nbVisite = v;
+    public String getSucces(){
+	return succes;
     }
 
     public int getNumOrdre(){  // avoir le numéros de l'exp nourriture lors de sa création
@@ -33,8 +34,21 @@ public class Nourriture{
     public int getNum(){  // avoir nb tot d'exp nourriture
 	return num;
     }
+
+    public void setNbVisite(int v){
+	nbVisite = v;
+    }
+
+    public void setNbVisite(String s){
+	succes = s;
+    }
     
     public void affiche(){
-	System.out.println("Experience de nourriture" + "\nn° :  " + numOrdre  + "\nnombre cachette visitee : " + nbVisite);
+	if (succes.equals("succes")){
+	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette avant de trouver la nourriture\n");
+	}
+	else{
+	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette sans trouver la nourriture\n");
+	}
     }
 }
