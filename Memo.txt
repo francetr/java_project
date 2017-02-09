@@ -11,13 +11,16 @@ définition de 5 attributs :
 - poids
 - sexe
 - statut (vivant ou mort)
+
 2 constructeurs :
 - 1 par défaut
 - prend en compte nom (String), poids (int), char(sexe)
 par défaut animal est vivant. On incrémente a chaque instanciation de constructeur un compteur.
 ajout des méthodes d'accesseurs (get) et de mutateurs (set) pour chaque attribut
-
+ajout de méthode d'affiche
 Rapport
  - Analyse (ce qu'on veut obtenir)
  - Conception (comment l'obtenir)
  - Résultat (ce qu'on a obtenu)
+
+
