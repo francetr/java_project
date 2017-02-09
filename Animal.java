@@ -9,6 +9,7 @@ abstract public class Animal{
     protected int numOrdre = 0;
     public static int num = 0;
 
+
     public Animal() {
 	num++;
 	numOrdre = num;
@@ -26,7 +27,6 @@ abstract public class Animal{
 	sexe = sx;
 	vivant = "vivant";
     }
-
 
     public String getId(){
 	return id;
