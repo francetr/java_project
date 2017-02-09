@@ -30,15 +30,17 @@ public class Gestion{
 	    int rep = saisie_entier();
 	    switch (rep){
 	    case 0 : System.exit(0); 
-	    case 1 : ajouterSouris(lesAnimaux); break;
-	    case 2 : ajouterSinge(lesAnimaux); break;
-	    case 3 : afficheAnimaux(lesAnimaux); break;
-	    case 4 : ajouterExperience(); break;
+	    case 1 : ajouterAnimal(lesAnimaux); break;
+	    case 2 : afficheAnimaux(lesAnimaux); break;
+	    case 3 : ajouterExperience(lesExperiences); break;
 	    }
 	}
     }
 
-    public static void ajouterExperience ()
+    public static Vector <Experience> ajouterExperience (Vector <Experience> lesExperiences)
+    /*
+      Permet d'ajouter une expérience dans le vecteur contenant les expérience
+    */
     {
 	Labyrinthe lab = new Labyrinthe(60);
 	lab.affiche();
@@ -46,8 +48,21 @@ public class Gestion{
 	lab.setTemps(120);
 	System.out.println(lab.getTemps());
 	lab.affiche();
-	Labyrinthe lab2 = new Labyrinthe(180);
-	lab2.affiche();
+	Image img2 = new Image(5, "succes");
+	img2.affiche();
+	Nourriture nour1 = new Nourriture(300, "succes");
+	nour1.affiche();
+	return lesExperiences;
+    }
+
+    public static void ajouterAnimal(Vector <Animal> lesAnimaux){
+	System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
+	int rep = saisie_entier();
+	switch(rep){
+	case 1 : ajouterSouris(lesAnimaux); break;
+	case 2 : ajouterSinge(lesAnimaux); break;
+	}
+	
     }
 
     
@@ -77,8 +92,8 @@ public class Gestion{
 
     public static Vector <Animal> ajouterSinge(Vector <Animal> lesSinges){
 	/*
-	 Permet d'ajouter un objet singe au vecteur contenant les animaux
-	 */
+	  Permet d'ajouter un objet singe au vecteur contenant les animaux
+	*/
 	System.out.println("Donner un nom au singe");
 	String nom = saisie_chaine();
 	System.out.println("Donner un poids au singe " + nom);
@@ -124,10 +139,9 @@ public class Gestion{
 	System.out.println("----------------");
 	System.out.println("Que voulez vous faire?");
 	System.out.println("Taper 0 pour sortir");
-	System.out.println("Taper 1 pour ajouter une souris");
-	System.out.println("Taper 2 pour ajouter un singe");
-	System.out.println("Taper 3 pour afficher la liste des animaux");
-	System.out.println("Taper 4 pour ajouter une expérience");
+	System.out.println("Taper 1 pour ajouter un animal");
+	System.out.println("Taper 2 pour afficher la liste des animaux");
+	System.out.println("Taper 3 pour ajouter une expérience");
     }
     
     public static String saisie_chaine ()
