@@ -1,14 +1,16 @@
 import java.util.*;
 public class Labyrinthe {
 
-    protected int temps = 0;
+    protected int temps;
     public static int num = 0;
     protected int numOrdre = 0;
+
     
     public Labyrinthe(){
 	num++;
 	numOrdre = num;
     }
+    
     public Labyrinthe(int tps){
 	num++;
 	numOrdre = num;
@@ -23,7 +25,15 @@ public class Labyrinthe {
 	temps = tps;
     }
 
+    public int getNumOrdre(){  // avoir le numéros de l'exp lab lors de sa création
+	return numOrdre;
+    }
+
+    public int getNum(){  // avoir nb tot d'exp lab
+	return num;
+    }
+    
     public void affiche(){
-	System.out.println("Experience du labyrinthe" + "\nn° :  " + numOrdre);
+	System.out.println("Experience du labyrinthe" + "\nn° :  " + numOrdre  + "\ntemps du parcous (sec) : " + temps);
     }
 }
