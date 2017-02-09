@@ -9,7 +9,7 @@ public class Singe extends Animal{
     }
     
     public void affiche(){
-	System.out.println("----Singe----");	
+	System.out.println("----Singe----");
 	super.affiche();
     }
 }
