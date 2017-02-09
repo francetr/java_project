@@ -4,7 +4,7 @@ public class Singe extends Animal{
     public Singe(){
 	super();
     }
-    public Singe(String chaine, int nb, char sx){
+    public Singe(String chaine, float nb, char sx){
 	super(chaine, nb, sx);
     }
     
