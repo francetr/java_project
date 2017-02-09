@@ -11,6 +11,8 @@ définition de 5 attributs :
 - poids
 - sexe
 - statut (vivant ou mort)
+- nb tot d'animaux
+- numéros d'animal
 
 2 constructeurs :
 - 1 par défaut
@@ -18,9 +20,25 @@ définition de 5 attributs :
 par défaut animal est vivant. On incrémente a chaque instanciation de constructeur un compteur.
 ajout des méthodes d'accesseurs (get) et de mutateurs (set) pour chaque attribut
 ajout de méthode d'affiche
+
+Classe Labyrinthe
+3 attributs (temps, nombre totale d'expériences, numéros d'expérience)
+2 constructeurs :
+- 1 par défaut
+- avec temps en paramètre
+
+Classe Nourriture
+4 attributes :
+- nb cachette
+- nb visites
+- numéros expérience
+- nb d'expériences
+
+
+
+
+
 Rapport
  - Analyse (ce qu'on veut obtenir)
  - Conception (comment l'obtenir)
  - Résultat (ce qu'on a obtenu)
-
-
