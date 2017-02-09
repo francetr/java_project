@@ -7,13 +7,12 @@
 
 Ajout d'animaux (création classe mère animale) 
 définition de 5 attributs :
-- identifiant
-- poids
-- sexe
-- statut (vivant ou mort)
-- nb tot d'animaux
-- numéros d'animal
-
+- identifiant (String)
+- poids (float)
+- sexe (char M F ou I indterminé)
+- statut (String : vivant (par défaut) ou mort))
+- nb tot d'animaux (int)
+- numéros d'animal (int)
 2 constructeurs :
 - 1 par défaut
 - prend en compte nom (String), poids (int), char(sexe)
@@ -22,7 +21,10 @@ ajout des méthodes d'accesseurs (get) et de mutateurs (set) pour chaque attribu
 ajout de méthode d'affiche
 
 Classe Labyrinthe
-3 attributs (temps, nombre totale d'expériences, numéros d'expérience)
+3 attributs :
+- temps (int)
+- nombre totale d'expériences (int)
+- numéros d'expérience (int)
 2 constructeurs :
 - 1 par défaut
 - avec temps en paramètre
