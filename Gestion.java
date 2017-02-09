@@ -38,31 +38,16 @@ public class Gestion{
 	}
     }
 
-    /*
-    public static Vector <Animal> ajouterAnimal(Vector <Animal> lesAnimaux){
-	*
-	  Permet de choisir quel animal on ajoute au vecteur contenant les animaux en appelant des fonctions d'ajout d'animaux
-	 *
-	while(true)
-	    {
-		System.out.println("Quel animal voulez-vous ajouter?\n1- Souris\n 2- Singe\n Retour au menu ");
-		int rep = saisie_entier();
-		if (rep == 1){
-		    ajouterSouris(lesAnimaux);
-		}
-		else if (rep == 2){
-		    ajouterSinge(lesAnimaux);
-		}
-		else{
-		    return lesAnimaux;
-		}
-	    }
-	
-    }
-*/
     public static void ajouterExperience ()
     {
-	;
+	Labyrinthe lab = new Labyrinthe(60);
+	lab.affiche();
+	System.out.println(lab.getTemps());
+	lab.setTemps(120);
+	System.out.println(lab.getTemps());
+	lab.affiche();
+	Labyrinthe lab2 = new Labyrinthe(180);
+	lab2.affiche();
     }
 
     
@@ -74,7 +59,7 @@ public class Gestion{
 	System.out.println("Donner un nom a la souris");
 	String nom = saisie_chaine();
 	System.out.println("Donner un poids a la souris " + nom);
-	int poids = saisie_entier();
+	float poids = saisie_entier();
 	char sexe = 'V';
 	while(sexe == 'V'){
 	    System.out.println("Quel est son sexe?\n 1 - Femelle\n 2 - Male");
