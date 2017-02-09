@@ -1,14 +1,13 @@
 import java.util.*;
 public class Labyrinthe {
 
-    protected int temps;
+    protected int temps = 0;
     public static int num = 0;
     protected int numOrdre = 0;
     
     public Labyrinthe(){
 	num++;
 	numOrdre = num;
-	temps = "";
     }
     public Labyrinthe(int tps){
 	num++;
