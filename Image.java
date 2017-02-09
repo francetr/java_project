@@ -29,13 +29,23 @@ public class Image {
     public int getNum(){  // avoir nb tot d'exp Image
 	return num;
     }
+
+    public String getSucces(){ // succes sous forme de String, a voir si on peut transformer en booléan
+	return succes;
+    }
     
     public void setNbImageChoisie(int choix){
 	nbImageChoisie = choix;
     }
 
     public void affiche(){
-	System.out.println("expérience Image" + "n° " + num );
+	System.out.println("expérience Image" + "\nn° " + num );
+	if (nbImageChoisie < 8){
+	    System.out.println("le sujet a trouvé la bonne image après " + nbImageChoisie + " tentatives," + " l'expérience est un " + succes + "\n" );
+	}
+	else{
+	    System.out.println("le sujet a trouvé la bonne image après " + nbImageChoisie + " tentatives," + " l'expérience est un " + succes + "\n" );
+	}
     }
     
 }
