@@ -3,25 +3,27 @@ public class Nourriture{
 
     protected int nbCachette = 5;
     protected int nbVisite = 0;
+    protected String succes = null;
     public static int num = 0;
     protected int numOrdre = 0;
 	
     public Nourriture(){
-	super();
+	num++;
+	numOrdre = num;
     }
 
     public Nourriture(int tps){
 	num++;
 	numOrdre = num;
-	temps = tps;
     }
-    
-    public int getTemps(){
-	return temps;
+
+    public int getNbVisite(){
+	return nbVisite;
     }
-    
-    public void setTemps(int tps){
-	temps = tps;
+   
+
+    public void setNbVisite(int v){
+	nbVisite = v;
     }
 
     public int getNumOrdre(){  // avoir le numéros de l'exp nourriture lors de sa création
@@ -33,6 +35,6 @@ public class Nourriture{
     }
     
     public void affiche(){
-	System.out.println("Experience de nourriture" + "\nn° :  " + numOrdre  + "\ntemps du parcous (sec) : " + temps);
+	System.out.println("Experience de nourriture" + "\nn° :  " + numOrdre  + "\nnombre cachette visitee : " + nbVisite);
     }
 }
