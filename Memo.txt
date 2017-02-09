@@ -5,6 +5,18 @@
 - 1 classe expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
 - 3 interface suivant test effectué (Labyrinthe, Nourriture et Image)
 
+Ajout d'animaux (création classe mère animale) 
+définition de 5 attributs :
+- identifiant
+- poids
+- sexe
+- statut (vivant ou mort)
+2 constructeurs :
+- 1 par défaut
+- prend en compte nom (String), poids (int), char(sexe)
+par défaut animal est vivant. On incrémente a chaque instanciation de constructeur un compteur.
+ajout des méthodes d'accesseurs (get) et de mutateurs (set) pour chaque attribut
+
 Rapport
  - Analyse (ce qu'on veut obtenir)
  - Conception (comment l'obtenir)
