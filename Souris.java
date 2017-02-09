@@ -4,7 +4,7 @@ public class Souris extends Animal{
     public Souris(){
 	super();
     }
-    public Souris(String chaine, int nb, char sx){
+    public Souris(String chaine, float nb, char sx){
 	super(chaine, nb, sx);
     }
 
