@@ -5,7 +5,7 @@
 - 1 classe expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
 - 3 interface suivant test effectué (Labyrinthe, Nourriture et Image)
 
-Ajout d'animaux (création classe mère animale) 
+Class Animale pour ajout d'animaux 
 définition de 5 attributs :
 - identifiant (String)
 - poids (float)
@@ -20,6 +20,13 @@ par défaut animal est vivant. On incrémente a chaque instanciation de construc
 ajout des méthodes d'accesseurs (get) et de mutateurs (set) pour chaque attribut
 ajout de méthode d'affiche
 
+Classe Singe fille de Animal
+a compléter
+
+Classe Souris fille de Animal
+Création de 2 classe souris pour exp?
+
+
 Classe Labyrinthe
 3 attributs :
 - temps (int)
@@ -31,11 +38,12 @@ Classe Labyrinthe
 
 Classe Nourriture
 4 attributes :
-- nb cachette
-- nb visites
-- numéros expérience
-- nb d'expériences
+- nb cachette (int)
+- nb visites (int)
+- numéros expérience (int)
+- nb d'expériences (int)
 
+Classe Image
 
 
 
