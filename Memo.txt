@@ -5,6 +5,16 @@
 - 1 classe expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
 - 3 interface suivant test effectué (Labyrinthe, Nourriture et Image)
 
+Class Gestion contenant le menu interactif
+4 attributs (pour l'instant)
+- Vecteur contenant les animaux
+- Vecteur contenant les singes
+- Vecteur contenant les souris
+- Vecteur contenant les expérience
+
+
+
+
 Class Animale pour ajout d'animaux 
 définition de 5 attributs :
 - identifiant (String)
