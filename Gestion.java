@@ -7,10 +7,10 @@ public class Gestion{
 	/*
 	  Gere tous les choix de l'utilisateur
 	 */
-	Vector <Animal> lesAnimaux = new <Animal> Vector();
-	//Vector <Souris> lesSouris = new <Souris> Vector();
-	//Vector <Singe> lesSinges = new <Singe> Vector();
-	Vector <Experience> lesExperiences = new <Experience> Vector();
+	Vector lesAnimaux = new Vector();
+	Vector lesSouris = new Vector();
+	Vector lesSinges = new Vector();
+	Vector lesExperiences = new Vector();
 	Singe singe1 = new Singe("singe1", 50, 'M');
 	Singe singe2 = new Singe("singe3", 50, 'M');
 	Singe singe3 = new Singe("singe4", 25, 'F');
@@ -22,7 +22,9 @@ public class Gestion{
 	Souris souris5 = new Souris("souris5", 40, 'F');
 	Souris souris6 = new Souris("souris6", 35, 'M');
 	Souris souris7 = new Souris("souris7", 20, 'F');
-	lesAnimaux.addElement(singe1); lesAnimaux.addElement(souris4); lesAnimaux.addElement(singe2);lesAnimaux.addElement(singe3);lesAnimaux.addElement(singe4); lesAnimaux.addElement(souris1);lesAnimaux.addElement(souris2);lesAnimaux.addElement(souris3);lesAnimaux.addElement(souris5); lesAnimaux.addElement(souris6);lesAnimaux.addElement(souris7);
+	lesSinges.addElement(singe1); lesSouris.addElement(souris4); lesSinges.addElement(singe2);lesSinges.addElement(singe3);lesSinges.addElement(singe4); lesSouris.addElement(souris1);lesSouris.addElement(souris2);lesSouris.addElement(souris3);lesSouris.addElement(souris5); lesSouris.addElement(souris6);lesSouris.addElement(souris7);
+	lesAnimaux.addElement(lesSinges);
+	lesAnimaux.addElement(lesSouris);
 
 
 	while (true){
@@ -37,7 +39,7 @@ public class Gestion{
 	}
     }
 
-    public static Vector <Experience> ajouterExperience (Vector <Experience> lesExperiences)
+    public static Vector ajouterExperience (Vector lesExperiences)
     /*
       Permet d'ajouter une expérience dans le vecteur contenant les expérience
     */
@@ -57,7 +59,7 @@ public class Gestion{
 	return lesExperiences;
     }
 
-    public static void ajouterAnimal(Vector <Animal> lesAnimaux)
+    public static void ajouterAnimal(Vector lesAnimaux)
     /*
       Permet d'ajouter un animal en appelant fonctions ajout souris ou singe selon choix de l'utilisateur 
     */
@@ -73,9 +75,9 @@ public class Gestion{
     }
 
     
-    public static Vector <Animal> ajouterSouris(Vector <Animal> lesSouris)
+    public static Vector ajouterSouris(Vector lesSouris)
     /*
-      Permet d'ajouter un objet souris au vecteur contenant les animaux
+      Permet d'ajouter un objet souris dans un vecteur ne contenant que des souris, au vecteur contenant les animaux
     */
     {
 	System.out.println("Donner un nom a la souris");
@@ -97,7 +99,7 @@ public class Gestion{
 	return lesSouris;
     }
 
-    public static Vector <Animal> ajouterSinge(Vector <Animal> lesSinges){
+    public static Vector ajouterSinge(Vector lesSinges){
 	/*
 	  Permet d'ajouter un objet singe au vecteur contenant les animaux
 	*/
@@ -120,18 +122,21 @@ public class Gestion{
 	return lesSinges;
     }
 
-    public static void afficheAnimaux(Vector <Animal> lesAnimaux){
+    public static void afficheAnimaux(Vector lesAnimaux){
 	/*
 	  Affiche la liste de tous les animaux
-	  Chercher a afficher selon espèces : affiche sans distinctions
+	  Pour cela, parcourt d'abord le vecteur animal puis parcourt les vecteurs contenus dans le vecteur animal pour afficher leurs contenus
 	 */
 	if (lesAnimaux.size() == 0){
 		System.out.println("ajouter d'abord des animaux");
 	    }
 	else{
 	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-		Animal item = (Animal) e.nextElement();
-		item.affiche();
+		Vector item = (Vector) e.nextElement();
+		for (Enumeration e2 = item.elements(); e2.hasMoreElements();){
+		    Animal anim = (Animal) e2.nextElement();
+		    anim.affiche();
+		}
 	    }
 	}
     }
