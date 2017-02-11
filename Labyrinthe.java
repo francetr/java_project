@@ -1,5 +1,5 @@
 import java.util.*;
-public class Labyrinthe {
+public class Labyrinthe extends Experience {
 
     protected int temps;
     public static int num = 0;
