@@ -110,7 +110,49 @@ public class Gestion{
 	}
     }
 
-    public static void afficherExperience(Vector lesExperiences){;}
+    public static void afficherExperience(Vector lesExperiences){
+	if (lesExperiences.size() == 0){
+	    System.out.println("ajouter d'abord des expériences");
+	}
+	else{
+System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 2 - Labyrinthe\n 3 - Image\n 4 - Tout");
+            int rep = saisie_entier();
+            String animal = "";
+            switch(rep){
+                case 1 : 
+                    for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
+                        Experience exp = (Experience) e.nextElement();
+                        if(exp instanceof Nourriture){
+                            exp.affiche();
+                        }
+                    }
+                    break;
+                case 2 : 
+                    for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
+                        Experience exp = (Experience) e.nextElement();
+                        if(exp instanceof Labyrinthe){
+                            exp.affiche();
+                        }
+                    }
+                    break;
+	    case 3 :
+		for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
+                        Experience exp = (Experience) e.nextElement();
+                        if(exp instanceof Image){
+                            exp.affiche();
+                        }
+                    }
+                    break;
+                default : 
+                    for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
+                        Experience exp = (Experience) e.nextElement();
+                        exp.affiche();
+                    }
+                    break;
+            }
+	}
+
+    }
 
     public static void ajouterAnimal(Vector lesAnimaux)
     /*
