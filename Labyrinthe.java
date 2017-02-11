@@ -34,6 +34,8 @@ public class Labyrinthe {
     }
     
     public void affiche(){
-	System.out.println("Experience du labyrinthe" + "\nn° :  " + numOrdre  + "\ntemps du parcous (sec) : " + temps);
+	System.out.println("Experience du labyrinthe n° "  + numOrdre  + "\ntemps du parcous (sec) : " + temps);
     }
+
+    
 }
