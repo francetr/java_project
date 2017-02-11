@@ -1,5 +1,5 @@
 import java.util.*;
-public class Nourriture{
+public class Nourriture extends Experience{
 
     protected int nbCachette = 5;
     protected int nbVisite = 0;
