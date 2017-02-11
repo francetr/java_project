@@ -56,70 +56,61 @@ public class Gestion{
     {
 	System.out.println("Quelle expérience voulez-vous ajouter? \n 1 - Labyrinthe \n 2 - Nourriture \n 3 - Image\n");
 	int rep = saisie_entier();
+	String exp ="";
 	switch(rep){
-	case 1 : ajouterLabyrinthe(lesExperiences); break;
-	case 2 : ajouterNourriture(lesExperiences); break;
-	case 3 : ajouterImage(lesExperiences); break;
+	case 1 : exp = "labyrinthe"; break;
+	case 2 : exp = "nourriture"; break;
+	case 3 : exp = "image"; break;
+	}
+
+	if(!exp.equals("")){
+
+	    //ajoute une expérience labyrinthe
+	    if (exp.equals("labyrinthe")){
+		System.out.println("Au bout de combien de temps le sujet a-t'il trouvé la sortie?");
+		int tps = saisie_entier();
+		Labyrinthe lab = new Labyrinthe(tps);
+		lab.affiche();
+		lesExperiences.addElement(lab);
+	    }
+
+	    //ajoute une expérience nourriture
+	    else if (exp.equals("nourriture")){
+		String succes = null;
+		System.out.println("L'experience est-elle un succès? \n 1 - Oui \n 2 - Non");
+		int choix = saisie_entier();
+		switch (choix){
+		case 1 : succes = "succes"; break;
+		case 2 : succes = "echec"; break;
+		}
+		System.out.println("Combien de cachettes la souris a-t'elle fouillées?");
+		int nb = saisie_entier();
+		Nourriture nour = new Nourriture(succes, nb);
+		lesExperiences.addElement(nour);
+	    }
+
+	    // ajoute une expérience image
+	    else if (exp.equals("image")){
+		String succes = null;
+		System.out.println("L'experience est-elle un succès? \n 1 - Oui \n 2 - Non");
+		int choix = saisie_entier();
+		switch(choix){
+		case 1 : succes = "succes"; break;
+		case 2 : succes = "echec"; break;
+		}
+		System.out.println("Combien d'images le singe a-t'il choisi?");
+		int nb = saisie_entier();
+		Image img = new Image(succes, nb);
+		lesExperiences.addElement(img);
+	    }
+
+	}
+	else{
+	    System.out.println("Entrer 1 ou 2 ou 3");
 	}
     }
 
-    
-    
-    public static Vector ajouterLabyrinthe (Vector lesLabyrinthes)
-    /*
-      Permet d'ajouter une expérience labyrinthe dans le vecteur contenant les expériences
-    */
-    {
-	System.out.println("Au bout de combien de temps le sujet a-t'il trouvé la sortie?");
-	int rep = saisie_entier();
-	Labyrinthe lab = new Labyrinthe(rep);
-	lab.affiche();
-	lesLabyrinthes.addElement(lab);
-	return lesLabyrinthes;
-    }
-    
-    public static Vector ajouterNourriture (Vector lesNourritures)
-    /*
-      Permet d'ajouter une expérience Nourriture dans le vecteur contenant les expériences
-    */
-    {
-	String succes = null;
-	System.out.println("L'experience est-elle un succès? \n 1 - Oui \n 2 - Non");
-	int rep = saisie_entier();
-	switch (rep){
-	case 1 : succes = "succes"; break;
-	case 2 : succes = "echec"; break;
-	}
-	System.out.println("Combien de cachettes la souris a-t'elle fouillées?");
-	int nb = saisie_entier();
-	Nourriture nour = new Nourriture(succes, nb);
-	lesNourritures.addElement(nour);	
-	return lesNourritures;
-    }
-    
-    public static Vector ajouterImage (Vector lesImages)
-    /*
-      Permet d'ajouter une expérience image dans le vecteur contenant les expérience
-    */
-    {
-	String succes = null;
-	System.out.println("L'experience est-elle un succès? \n 1 - Oui \n 2 - Non");
-	int rep = saisie_entier();
-	switch(rep){
-	case 1 : succes = "succes"; break;
-	case 2 : succes = "echec"; break;
-	}
-	System.out.println("Combien d'images le singe a-t'il choisi?");
-	int nb = saisie_entier();
-	Image img = new Image(succes, nb);
-	lesImages.addElement(img);
-	return lesImages;
-    }
-
-
-    public static void afficherExperience(Vector lesExperiences){
-	;
-    }
+    public static void afficherExperience(Vector lesExperiences){;}
 
     public static void ajouterAnimal(Vector lesAnimaux)
     /*
