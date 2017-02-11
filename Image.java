@@ -12,7 +12,7 @@ public class Image {
 	numOrdre = num;
     }
 
-    public Image(int choix, String chaine ){
+    public Image(String chaine, int choix){
 	num++;
 	numOrdre = num;
 	nbImageChoisie = choix;
