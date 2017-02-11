@@ -12,7 +12,7 @@ public class Nourriture{
 	numOrdre = num;
     }
 
-    public Nourriture(int n , String s){
+    public Nourriture(String s, int n){
 	num++;
 	numOrdre = num;
 	nbVisite = n;
