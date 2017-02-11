@@ -1,23 +1,27 @@
-2 packages, 10 classes :
-- package principal
-   - 1 gestion : permettant de piloter les expériences
+2 packages, 11 classes :
+- dossier racine
+   - 1 classe gestion : permettant de piloter les expériences
+   
 - package animaux :
    - 1 classe mère animal
    - 2 classes filles héritant d'animal (Souris et Singe)
-   - 1 classe Cobaye gérant les animaux de l'étude
+   - 1 class Animaux gérant les animaux (ajouter souris/singe et afficher souris/singe)
    
 - package experiences :
-   - 1 classe mère expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
+   - 1 classe mère expérience qui va permettre de jouer sur les tests 
    - 3 classes filles (Labyrinthe, Nourriture et Image) héritant de la classe Expérience
+   - 1 classe Pathway gérant les expériences (ajout/affichage selon expérience)
+   - 1 classe Cobaye gérant les animaux de l'étude(à faire)
 
 Class Gestion contenant le menu interactif
-4 attributs (pour l'instant)
+2 attributs (pour l'instant)
 - Vecteur contenant les animaux
-- Vecteur contenant les singes
-- Vecteur contenant les souris
 - Vecteur contenant les expérience
-
-
+4 méthodes :
+- ajouter Animal
+- afficher Animal
+- ajouter Experience
+- afficher Experience
 
 
 Class Animale pour ajout d'animaux 
@@ -36,11 +40,22 @@ ajout des méthodes d'accesseurs (get) et de mutateurs (set) pour chaque attribu
 ajout de méthode d'affiche
 
 Classe Singe fille de Animal
-a compléter
+complétion des méthodes héritées d'Animal
 
 Classe Souris fille de Animal
+complétion des méthodes héritées d'Animal
 Création de 2 classe souris pour exp?
 
+
+Classe Pathway
+3 attributs : 
+- vecteur avec exp nourriture
+- vecteur avec exp image
+- vecteur avec exp labyrinthe
+
+6 méthodes :
+- ajouter exp(image/labyrinthe/nourriture)
+- afficher exp(image/labyrinthe/nourriture)
 
 Classe Labyrinthe
 3 attributs :
@@ -59,7 +74,6 @@ Classe Nourriture
 - nb d'expériences (int)
 
 Classe Image
-
 
 
 
