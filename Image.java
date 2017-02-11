@@ -1,5 +1,5 @@
 import java.util.*;
-public class Image {
+public class Image extends Experience {
     
     protected int nbImage = 10;
     protected int nbImageChoisie = 0;
