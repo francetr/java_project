@@ -1,9 +1,11 @@
-8 classes :
+10 classes :
 - 1 gestion : permettant de piloter les expériences
 - 1 classe mère animal
 - 2 classes filles héritant d'animal (Souris et Singe)
-- 1 classe expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
-- 3 interface suivant test effectué (Labyrinthe, Nourriture et Image)
+- 1 classe mère expérience qui va permettre de jouer sur les tests (comme classe Pathway pour l'exo molecule)
+- 3 classes filles (Labyrinthe, Nourriture et Image) héritant de la classe Expérience
+- 1 classe Cobaye gérant les animaux de l'étude
+- 1 classe Pathway gérant les expériences rentrées
 
 Class Gestion contenant le menu interactif
 4 attributs (pour l'instant)
