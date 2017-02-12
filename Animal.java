@@ -1,4 +1,6 @@
+package animaux;
 import java.util.*;
+import java.io.*;
 
 abstract public class Animal{
 
@@ -8,7 +10,6 @@ abstract public class Animal{
     protected String vivant;
     protected int numOrdre = 0;
     public static int num = 0;
-
 
     public Animal() {
 	num++;
@@ -27,7 +28,7 @@ abstract public class Animal{
 	sexe = sx;
 	vivant = "vivant";
     }
-
+    
     public String getId(){
 	return id;
     }
@@ -68,7 +69,35 @@ abstract public class Animal{
 	vivant = viv;
     }
 
+    
     public void affiche(){	
-	System.out.println("id : " + id + "\npoids : " + poids + "\nsexe : " + sexe + "\nstatut : " + vivant + "\n" );
+	System.out.println("num : " + numOrdre +"\nid : " + id + "\npoids : " + poids + "\nsexe : " + sexe + "\nstatut : " + vivant + "\n" );
+    }
+
+
+    public static String saisie_chaine ()
+    {
+	try {
+	    BufferedReader buff = new BufferedReader
+		(new InputStreamReader(System.in));
+	    String chaine=buff.readLine();
+	    return chaine;
+	}
+	catch(IOException e) {
+	    System.out.println(" impossible de travailler" +e);
+	    return null;
+	}
+    }
+
+    public static int saisie_entier ()
+    {
+	try{
+	    BufferedReader buff = new BufferedReader
+		(new InputStreamReader(System.in));
+	    String chaine=buff.readLine();
+	    int num = Integer.parseInt(chaine);
+	    return num;
+	}
+	catch(IOException e){return 0;}
     }
 }
