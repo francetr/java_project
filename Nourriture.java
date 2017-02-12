@@ -1,3 +1,4 @@
+package experiences;
 import java.util.*;
 public class Nourriture extends Experience{
 
@@ -39,7 +40,7 @@ public class Nourriture extends Experience{
 	nbVisite = v;
     }
 
-    public void setNbVisite(String s){
+    public void setSucces(String s){
 	succes = s;
     }
     
