@@ -58,7 +58,7 @@ public class Pathway{
 	    System.out.println("Combien d'images le singe "+ sin.getId() +" a-t'il choisi?");
 	    int nb = saisie_entier();
 	    if (nb < 8){
-		System.out.println("Essai n° : " + (i+1) + "Singe : "+ sin.getId() + "Résultat : succès\n");
+		System.out.println("Essai n° : " + (i+1) + "\n" + + "Singe : "+ "\n" + sin.getId() + "\n" + "Résultat : succès\n");
 		succes = "succes";
 	    }
 	    else{
