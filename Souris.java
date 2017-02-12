@@ -1,3 +1,5 @@
+package animaux;
+
 import java.util.*;
 public class Souris extends Animal{
 
@@ -8,8 +10,8 @@ public class Souris extends Animal{
 	super(chaine, nb, sx);
     }
 
-    public void affiche(){	
-    	System.out.println("----Souris----");	
+    public void affiche(){
+	System.out.println("----Souris----");
 	super.affiche();
     }
 }
