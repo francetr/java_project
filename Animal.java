@@ -1,80 +1,247 @@
-package animaux;
+import experiences.*; // import paquetage contenant les expériences
+import animaux.*;  // import paquetage contenant les animaux
 import java.util.*;
 import java.io.*;
 
-abstract public class Animal{
+public class Gestion{
 
-    protected String id;
-    protected float poids;
-    protected char sexe;
-    protected String vivant;
-    protected int numOrdre = 0;
-    public static int num = 0;
+    public static void main(String [] arg){
+	/*
+	  Gere tous les choix de l'utilisateur
+	 */
+	Vector lesAnimaux = new Vector();
+	Vector lesExperiences = new Vector();
+	Vector lesCobayes = new Vector();
+	
+	Singe singe1 = new Singe("singe1", 50, 'M');
+	Singe singe2 = new Singe("singe3", 50, 'M');
+	Singe singe3 = new Singe("singe4", 25, 'F');
+	Singe singe4 = new Singe("singe2", 50, 'F');
+        
+	Souris souris1 = new Souris("souris1", 20, 'F');
+	Souris souris2 = new Souris("souris2", 25, 'F');
+	Souris souris3 = new Souris("souris3", 50, 'M');
+	Souris souris4 = new Souris("souris4", 30, 'M');
+	Souris souris5 = new Souris("souris5", 40, 'F');
+	Souris souris6 = new Souris("souris6", 35, 'M');
+	Souris souris7 = new Souris("souris7", 20, 'F');
+        
+	lesAnimaux.addElement(singe1);
+        lesAnimaux.addElement(singe2);
+        lesAnimaux.addElement(singe3);
+        lesAnimaux.addElement(singe4); 
+        
+        lesAnimaux.addElement(souris1);
+        lesAnimaux.addElement(souris2);
+        lesAnimaux.addElement(souris3);
+        lesAnimaux.addElement(souris4); 
+        lesAnimaux.addElement(souris5); 
+        lesAnimaux.addElement(souris6);
+        lesAnimaux.addElement(souris7);
 
-    public Animal() {
-	num++;
-	numOrdre = num;
-	id = "Inconnue";
-	poids = 0;
-	sexe = 'I';
-	vivant = "vivant";
+	while (true){
+	    afficheMenu();
+	    int rep = saisie_entier();
+	    switch (rep){
+	    case 0 : System.exit(0); 
+	    case 1 : ajouterAnimal(lesAnimaux); break;
+	    case 2 : afficherAnimaux(lesAnimaux); break;
+	    case 3 : chercherAnimal(lesAnimaux); break;
+	    case 4 : modifierAnimal(lesAnimaux); break;
+	    case 5 : ajouterExperience(lesExperiences,lesAnimaux); break;       
+	    case 6 : afficherExperience(lesExperiences); break;
+	    
+	    }
+	}
     }
 
-    public Animal(String chaine, float nb, char sx) {
-	num++;
-	id = chaine;
-	numOrdre = num;
-	poids = nb;
-	sexe = sx;
-	vivant = "vivant";
+    public static void ajouterAnimal(Vector lesAnimaux)
+    /*
+      Permet d'ajouter un animal en appelant fonctions ajout souris ou singe selon choix de l'utilisateur 
+    */
+    {
+	Cobaye cob = new Cobaye();				
+	System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
+        int rep = saisie_entier();
+        String animal = "";
+        switch(rep){
+	case 1 : cob.ajouterSouris(lesAnimaux); break;
+	case 2 : cob.ajouterSinge(lesAnimaux); break;
+	default : System.out.println("Ajout avorté"); break;
+        }
     }
     
-    public String getId(){
-	return id;
+    public static void afficherAnimaux(Vector lesAnimaux){
+	if (lesAnimaux.size() == 0){
+	    System.out.println("Ajouter d'abord des animaux");
+	}else{
+	    Cobaye cob = new Cobaye();
+            System.out.println("Quel est groupe d'animal voulez-vous afficher?\n 1 - Souris\n 2 - Singe\n 3 - Tout");
+            int rep = saisie_entier();
+            String animal = "";
+            switch(rep){
+	    case 1 : cob.afficherSouris(lesAnimaux); break;
+	    case 2 : cob.afficherSinge(lesAnimaux); break;
+	    default : 
+		for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		    Animal ani = (Animal) e.nextElement();
+		    ani.affiche();
+		}
+		break;
+            }
+	}   
     }
 
-    public float getPoids(){
-	return poids;
+    public static void chercherAnimal(Vector lesAnimaux){
+	if (lesAnimaux.size() == 0){
+	    System.out.println("Ajouter d'abord des animaux");
+	}else{
+	    System.out.println("Entrer l'id de l'animal que vous chercher");
+	    String chaine = saisie_chaine();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal ani = (Animal) e.nextElement();
+		if (ani.getId().equals(chaine)){
+		    ani.affiche();
+		    return;
+		}
+	    }
+	    System.out.println("Pas d'animal " + chaine);
+	}
     }
-
-    public char getSexe(){  // avoir sexe M ou F; I = Indéterminé
-	return sexe;
+        
+    public static void modifierAnimal(Vector lesAnimaux){
+	if (lesAnimaux.size() == 0){
+	    System.out.println("Ajouter d'abord des animaux");
+	}else{
+	    afficherAnimaux(lesAnimaux);
+	    System.out.println("Entrer le num de l'animal que vous souhaitez modifier");
+	    int rep = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal ani = (Animal) e.nextElement();
+		if(ani.getNumOrdre() == rep){
+		    modifier(ani);
+		}
+	    }
+	}
+    }
+    public static void modifier(Animal ani){
+	System.out.println("Voulez vous changer le nom? Taper 1 pour oui");
+	int rep = saisie_entier();
+	if (rep ==1){
+		System.out.println("Donner le nouveau nom");
+		String nom=saisie_chaine();
+		ani.setId(nom);
+	    }
+	System.out.println("Voulez vous changer le poids? Taper 1 pour oui");
+	int rep_2 = saisie_entier();
+	if (rep_2 ==1){
+		System.out.println("Donner le nouveau poids");
+		float poids = Cobaye.saisie_float();
+		ani.setPoids(poids);
+	    }
+	System.out.println("Voulez vous changer le statut? Taper 1 pour oui");
+	int rep_3 = saisie_entier();
+	if (rep_3 ==1){
+	    String stat = "";
+	    while (stat == ""){
+		System.out.println("Donner le nouveau statut\n 1 - vivant\n 2 - mort");
+		int choix = saisie_entier();
+		switch(choix){
+		case 1 : stat = "vivant"; break;
+		case 2 : stat = "mort"; break;
+		default : System.out.println("Entrer 1 ou 2"); break;
+		}
+	    }
+	    ani.setStatut(stat);
+	}
     }
     
-    public String getStatut(){ // avoir statut viv ou mort
-	return vivant;
+    public static void ajouterExperience (Vector lesExperiences, Vector lesAnimaux)
+    /*
+      Permet d'ajouter une expérience dans le vecteur contenant les expérience
+    */
+    {
+	Pathway path = new Pathway();
+	Cobaye cob = new Cobaye();
+	System.out.println("Quelle expérience voulez-vous ajouter? \n 1 - Labyrinthe \n 2 - Nourriture \n 3 - Image\n");
+	int rep = saisie_entier();
+	String exp ="";
+	if (rep == 1){
+	    cob.afficherSouris(lesAnimaux);
+	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
+	    int choix = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal item = (Animal) e.nextElement();
+		if (item.getNumOrdre() == choix){
+		    path.ajouterLabyrinthe(lesExperiences, item);
+		    return;
+		}
+	    }
+	}else if (rep == 2){
+	    cob.afficherSouris(lesAnimaux);
+	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
+	    int choix = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal item = (Animal) e.nextElement();
+		if (item.getNumOrdre() == choix){
+		    path.ajouterNourriture(lesExperiences, item);
+		    return;
+		}
+	    }
+	}else if (rep == 3){
+	    cob.afficherSinge(lesAnimaux);
+	    System.out.println("Donner le num du singe a ajouter a l'expérience");
+	    int choix = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal item = (Animal) e.nextElement();
+		if (item.getNumOrdre() == choix){
+		    path.ajouterImage(lesExperiences, item);
+		    return;
+		}
+	    }
+	}else{
+	    System.out.println("Ajout d'expérience avorté");
+	}       
     }
 
-    public int getNumOrdre(){  // avoir le numéros de l'animal lors de sa création
-	return numOrdre;
+    public static void afficherExperience(Vector lesExperiences){
+	if (lesExperiences.size() == 0){
+	    System.out.println("Ajouter d'abord des expériences");
+	}else{
+	    Pathway path = new Pathway();
+System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 2 - Labyrinthe\n 3 - Image\n 4 - Tout");
+            int rep = saisie_entier();
+            switch(rep){
+	    case 1 : path.afficherNourriture(lesExperiences); break;
+	    case 2 : path.afficherLabyrinthe(lesExperiences); break;
+	    case 3 : path.afficherImage(lesExperiences); break;
+	    default : 
+		for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
+		    Experience exp = (Experience) e.nextElement();
+		    exp.affiche();
+		}
+		break;
+            }
+	}
     }
-
-    public int getNum(){  // avoir nb tot d'animaux
-	return num;
+        
+    public static void afficheMenu(){
+	/*
+	  Affiche a l'utilisateur le menu
+	 */
+	System.out.println("----------------");
+	System.out.println("|     Menu     |");
+	System.out.println("----------------");
+	System.out.println("Que voulez vous faire?");
+	System.out.println("Taper 0 pour sortir");
+	System.out.println("Taper 1 pour ajouter un animal");
+	System.out.println("Taper 2 pour afficher la liste des animaux présents dans l'étude");
+	System.out.println("Taper 3 pour chercher un animal");
+	System.out.println("Taper 4 pour modifier un animal");
+	System.out.println("Taper 5 pour ajouter une expérience");
+	System.out.println("Taper 6 pour afficher les expériences");
     }
     
-    public void setId(String chaine){
-	id = chaine;
-    }
-
-    public void setPoids(float nb){
-	poids = nb;
-    }   
-
-    public void setSexe(char sx){
-	sexe = sx;
-    }
-
-    public void setStatut(String viv){
-	vivant = viv;
-    }
-
-    
-    public void affiche(){	
-	System.out.println("num : " + numOrdre +"\nid : " + id + "\npoids : " + poids + "\nsexe : " + sexe + "\nstatut : " + vivant + "\n" );
-    }
-
-
     public static String saisie_chaine ()
     {
 	try {
