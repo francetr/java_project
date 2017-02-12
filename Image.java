@@ -11,6 +11,7 @@ public class Image extends Experience {
     public Image(){
 	num++;
 	numOrdre = num;
+	essai = 1;
     }
 
     public Image(String chaine, int choix){
@@ -18,6 +19,7 @@ public class Image extends Experience {
 	numOrdre = num;
 	nbImageChoisie = choix;
 	succes = chaine;
+	essai = 1;
     }
 
     public int getNbImageChoisie(){
@@ -53,14 +55,14 @@ public class Image extends Experience {
     }
     
     public void affiche(){
-	System.out.println("Expérience Image n°: " + numOrdre + "\n");
+	System.out.println("Expérience Image n°: " + numOrdre);
 	for (int i = 0; i < 5; i++){
 	    System.out.println("Essai n° : " +i );
 	    if (nbImageChoisie < 8){
-		System.out.println("Le sujet a trouvé la bonne image après " + nbImageChoisie[i] + " tentatives, l'expérience est un " + succes[i] + "\n" );
+		System.out.println("Le sujet a trouvé la bonne image après " + nbImageChoisie + " tentatives, l'expérience est un " + succes + "\n" );
 	    }
 	    else{
-		System.out.println("Le sujet a trouvé la bonne image après " + nbImageChoisie[i] + " tentatives, l'expérience est un " + succes[i] + "\n" );
+		System.out.println("Le sujet a trouvé la bonne image après " + nbImageChoisie + " tentatives, l'expérience est un " + succes + "\n" );
 	    }
 	}
     }
