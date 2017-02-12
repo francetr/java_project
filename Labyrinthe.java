@@ -1,42 +1,55 @@
 package experiences;
 import java.util.*;
-public class Labyrinthe extends Experience {
+public class Nourriture extends Experience{
 
-    protected int temps;
+    protected int nbCachette = 5;
+    protected int nbVisite = 0;
+    protected String succes = null;
     public static int num = 0;
     protected int numOrdre = 0;
-
-    
-    public Labyrinthe(){
+	
+    public Nourriture(){
 	num++;
 	numOrdre = num;
     }
-    
-    public Labyrinthe(int tps){
+
+    public Nourriture(String s, int n){
 	num++;
 	numOrdre = num;
-	temps = tps;
+	nbVisite = n;
+	succes = s;
     }
 
-    public int getTemps(){
-	return temps;
+    public int getNbVisite(){
+	return nbVisite;
     }
 
-    public void setTemps(int tps){
-	temps = tps;
+    public String getSucces(){
+	return succes;
     }
 
-    public int getNumOrdre(){  // avoir le numéros de l'exp lab lors de sa création
+    public int getNumOrdre(){  // avoir le numéros de l'exp nourriture lors de sa création
 	return numOrdre;
     }
 
-    public int getNum(){  // avoir nb tot d'exp lab
+    public int getNum(){  // avoir nb tot d'exp nourriture
 	return num;
+    }
+
+    public void setNbVisite(int v){
+	nbVisite = v;
+    }
+
+    public void setNbVisite(String s){
+	succes = s;
     }
     
     public void affiche(){
-	System.out.println("Experience du labyrinthe n° " + numOrdre  + "\ntemps du parcous (sec) : " + temps);
+	if (succes.equals("succes")){
+	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette avant de trouver la nourriture\n");
+	}
+	else{
+	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette sans trouver la nourriture\n");
+	}
     }
-
-    
 }
