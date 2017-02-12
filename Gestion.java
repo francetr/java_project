@@ -1,3 +1,5 @@
+import experiences.*; // import paquetage contenant les expériences
+import animaux.*;  // import paquetage contenant les animaux
 import java.util.*;
 import java.io.*;
 
@@ -43,115 +45,13 @@ public class Gestion{
 	    case 0 : System.exit(0); 
 	    case 1 : ajouterAnimal(lesAnimaux); break;
 	    case 2 : afficherAnimaux(lesAnimaux); break;
-	    case 3 : ajouterExperience(lesExperiences); break;
-	    case 4 : afficherExperience(lesExperiences); break;
+	    case 3 : chercherAnimal(lesAnimaux); break;
+	    case 4 : modifierAnimal(lesAnimaux); break;
+	    case 5 : ajouterExperience(lesExperiences,lesAnimaux); break;       
+	    case 6 : afficherExperience(lesExperiences); break;
+	    
 	    }
 	}
-    }
-
-    public static void ajouterExperience (Vector lesExperiences)
-    /*
-      Permet d'ajouter une expérience dans le vecteur contenant les expérience
-    */
-    {
-	System.out.println("Quelle expérience voulez-vous ajouter? \n 1 - Labyrinthe \n 2 - Nourriture \n 3 - Image\n");
-	int rep = saisie_entier();
-	String exp ="";
-	switch(rep){
-	case 1 : exp = "labyrinthe"; break;
-	case 2 : exp = "nourriture"; break;
-	case 3 : exp = "image"; break;
-	}
-
-	if(!exp.equals("")){
-
-	    //ajoute une expérience labyrinthe
-	    if (exp.equals("labyrinthe")){
-		System.out.println("Au bout de combien de temps le sujet a-t'il trouvé la sortie?");
-		int tps = saisie_entier();
-		Labyrinthe lab = new Labyrinthe(tps);
-		lab.affiche();
-		lesExperiences.addElement(lab);
-	    }
-
-	    //ajoute une expérience nourriture
-	    else if (exp.equals("nourriture")){
-		String succes = null;
-		System.out.println("L'experience est-elle un succès? \n 1 - Oui \n 2 - Non");
-		int choix = saisie_entier();
-		switch (choix){
-		case 1 : succes = "succes"; break;
-		case 2 : succes = "echec"; break;
-		}
-		System.out.println("Combien de cachettes la souris a-t'elle fouillées?");
-		int nb = saisie_entier();
-		Nourriture nour = new Nourriture(succes, nb);
-		lesExperiences.addElement(nour);
-	    }
-
-	    // ajoute une expérience image
-	    else if (exp.equals("image")){
-		String succes = null;
-		System.out.println("L'experience est-elle un succès? \n 1 - Oui \n 2 - Non");
-		int choix = saisie_entier();
-		switch(choix){
-		case 1 : succes = "succes"; break;
-		case 2 : succes = "echec"; break;
-		}
-		System.out.println("Combien d'images le singe a-t'il choisi?");
-		int nb = saisie_entier();
-		Image img = new Image(succes, nb);
-		lesExperiences.addElement(img);
-	    }
-
-	}
-	else{
-	    System.out.println("Entrer 1 ou 2 ou 3");
-	}
-    }
-
-    public static void afficherExperience(Vector lesExperiences){
-	if (lesExperiences.size() == 0){
-	    System.out.println("ajouter d'abord des expériences");
-	}
-	else{
-System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 2 - Labyrinthe\n 3 - Image\n 4 - Tout");
-            int rep = saisie_entier();
-            String animal = "";
-            switch(rep){
-                case 1 : 
-                    for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
-                        Experience exp = (Experience) e.nextElement();
-                        if(exp instanceof Nourriture){
-                            exp.affiche();
-                        }
-                    }
-                    break;
-                case 2 : 
-                    for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
-                        Experience exp = (Experience) e.nextElement();
-                        if(exp instanceof Labyrinthe){
-                            exp.affiche();
-                        }
-                    }
-                    break;
-	    case 3 :
-		for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
-                        Experience exp = (Experience) e.nextElement();
-                        if(exp instanceof Image){
-                            exp.affiche();
-                        }
-                    }
-                    break;
-                default : 
-                    for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
-                        Experience exp = (Experience) e.nextElement();
-                        exp.affiche();
-                    }
-                    break;
-            }
-	}
-
     }
 
     public static void ajouterAnimal(Vector lesAnimaux)
@@ -159,75 +59,174 @@ System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 
       Permet d'ajouter un animal en appelant fonctions ajout souris ou singe selon choix de l'utilisateur 
     */
     {
- System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
+	Animaux anim = new Animaux();				
+	System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
         int rep = saisie_entier();
         String animal = "";
         switch(rep){
-            case 1 : animal = "souris"; break;
-            case 2 : animal = "singe"; break;
-            default : System.out.println("Ajout avorté"); break;
-        }
-        
-        if(!animal.equals("")){
-            System.out.print("Donner un nom "+ (animal.equals("souris") ? "a la souris" : "au singe") +" : ");
-            String nom = saisie_chaine();
-            System.out.println("Donner un poids a " + nom);
-            float poids = saisie_entier();
-            char sexe = 'V';
-            while(sexe == 'V'){
-                System.out.println("Quel est son sexe?\n 1 - Femelle\n 2 - Male");
-                int resp = saisie_entier();
-                switch(resp){
-                case 1 : sexe = 'F';break;
-                case 2 : sexe = 'M';break;
-                default : System.out.println("entrer 1 ou 2");
-                }
-            }
-            if(animal.equals("souris")){
-                Souris souris = new Souris(nom, poids, sexe);
-                lesAnimaux.add(souris);
-            }else{
-                Singe singe = new Singe(nom, poids, sexe);
-                lesAnimaux.add(singe);
-            }
+	case 1 : anim.ajouterSouris(lesAnimaux); break;
+	case 2 : anim.ajouterSinge(lesAnimaux); break;
+	default : System.out.println("Ajout avorté"); break;
         }
     }
     
     public static void afficherAnimaux(Vector lesAnimaux){
 	if (lesAnimaux.size() == 0){
-		System.out.println("Ajouter d'abord des animaux");
+	    System.out.println("Ajouter d'abord des animaux");
 	}else{
+	    Animaux anim = new Animaux();
             System.out.println("Quel est groupe d'animal voulez-vous afficher?\n 1 - Souris\n 2 - Singe\n 3 - Tout");
             int rep = saisie_entier();
             String animal = "";
             switch(rep){
-                case 1 : 
-                    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-                        Animal anim = (Animal) e.nextElement();
-                        if(anim instanceof Souris){
-                            anim.affiche();
-                        }
-                    }
-                    break;
-                case 2 : 
-                    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-                        Animal anim = (Animal) e.nextElement();
-                        if(anim instanceof Singe){
-                            anim.affiche();
-                        }
-                    }
-                    break;
-                default : 
-                    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-                        Animal anim = (Animal) e.nextElement();
-                        anim.affiche();
-                    }
-                    break;
+	    case 1 : anim.afficherSouris(lesAnimaux); break;
+	    case 2 : anim.afficherSinge(lesAnimaux); break;
+	    default : 
+		for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		    Animal ani = (Animal) e.nextElement();
+		    ani.affiche();
+		}
+		break;
             }
 	}   
     }
+
+    public static void chercherAnimal(Vector lesAnimaux){
+	if (lesAnimaux.size() == 0){
+	    System.out.println("Ajouter d'abord des animaux");
+	}else{
+	    System.out.println("Entrer l'id de l'animal que vous chercher");
+	    String chaine = saisie_chaine();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal ani = (Animal) e.nextElement();
+		if (ani.getId().equals(chaine)){
+		    ani.affiche();
+		    return;
+		}
+	    }
+	    System.out.println("Pas d'animal " + chaine);
+	}
+    }
+        
+    public static void modifierAnimal(Vector lesAnimaux){
+	if (lesAnimaux.size() == 0){
+	    System.out.println("Ajouter d'abord des animaux");
+	}else{
+	    afficherAnimaux(lesAnimaux);
+	    System.out.println("Entrer le num de l'animal que vous souhaitez modifier");
+	    int rep = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal ani = (Animal) e.nextElement();
+		if(ani.getNumOrdre() == rep){
+		    modifier(ani);
+		}
+	    }
+	}
+    }
+    public static void modifier(Animal ani){
+	System.out.println("Voulez vous changer le nom? Taper 1 pour oui");
+	int rep = saisie_entier();
+	if (rep ==1){
+		System.out.println("Donner le nouveau nom");
+		String nom=saisie_chaine();
+		ani.setId(nom);
+	    }
+	System.out.println("Voulez vous changer le poids? Taper 1 pour oui");
+	int rep_2 = saisie_entier();
+	if (rep_2 ==1){
+		System.out.println("Donner le nouveau poids");
+		float poids = Animaux.saisie_float();
+		ani.setPoids(poids);
+	    }
+	System.out.println("Voulez vous changer le statut? Taper 1 pour oui");
+	int rep_3 = saisie_entier();
+	if (rep_3 ==1){
+	    String stat = "";
+	    while (stat == ""){
+		System.out.println("Donner le nouveau statut\n 1 - vivant\n 2 - mort");
+		int choix = saisie_entier();
+		switch(choix){
+		case 1 : stat = "vivant"; break;
+		case 2 : stat = "mort"; break;
+		default : System.out.println("Entrer 1 ou 2"); break;
+		}
+	    }
+	    ani.setStatut(stat);
+	}
+    }
     
-    
+    public static void ajouterExperience (Vector lesExperiences, Vector lesAnimaux)
+    /*
+      Permet d'ajouter une expérience dans le vecteur contenant les expérience
+    */
+    {
+	Pathway path = new Pathway();
+	System.out.println("Quelle expérience voulez-vous ajouter? \n 1 - Labyrinthe \n 2 - Nourriture \n 3 - Image\n");
+	int rep = saisie_entier();
+	String exp ="";
+	if (rep == 1){
+	    Animaux anim = new Animaux();
+	    anim.afficherSouris(lesAnimaux);
+	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
+	    int choix = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal item = (Animal) e.nextElement();
+		if (item.getNumOrdre() == choix){
+		    path.ajouterLabyrinthe(lesExperiences, item);
+		    return;
+		}
+	    }
+	}else if (rep == 2){
+	    Animaux anim = new Animaux();
+	    anim.afficherSouris(lesAnimaux);
+	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
+	    int choix = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal item = (Animal) e.nextElement();
+		if (item.getNumOrdre() == choix){
+		    path.ajouterNourriture(lesExperiences, item);
+		    return;
+		}
+	    }
+	}else if (rep == 3){
+	    Animaux anim = new Animaux();
+	    anim.afficherSinge(lesAnimaux);
+	    System.out.println("Donner le num du singe a ajouter a l'expérience");
+	    int choix = saisie_entier();
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
+		Animal item = (Animal) e.nextElement();
+		if (item.getNumOrdre() == choix){
+		    path.ajouterImage(lesExperiences, item);
+		    return;
+		}
+	    }
+	}else{
+	    System.out.println("Ajout d'expérience avorté");
+	}       
+    }
+
+    public static void afficherExperience(Vector lesExperiences){
+	if (lesExperiences.size() == 0){
+	    System.out.println("Ajouter d'abord des expériences");
+	}else{
+	    Pathway path = new Pathway();
+System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 2 - Labyrinthe\n 3 - Image\n 4 - Tout");
+            int rep = saisie_entier();
+            String animal = "";
+            switch(rep){
+	    case 1 : path.afficherNourriture(lesExperiences); break;
+	    case 2 : path.afficherLabyrinthe(lesExperiences); break;
+	    case 3 : path.afficherImage(lesExperiences); break;
+	    default : 
+		for (Enumeration e = lesExperiences.elements(); e.hasMoreElements();){
+		    Experience exp = (Experience) e.nextElement();
+		    exp.affiche();
+		}
+		break;
+            }
+	}
+    }
+        
     public static void afficheMenu(){
 	/*
 	  Affiche a l'utilisateur le menu
@@ -239,8 +238,11 @@ System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 
 	System.out.println("Taper 0 pour sortir");
 	System.out.println("Taper 1 pour ajouter un animal");
 	System.out.println("Taper 2 pour afficher la liste des animaux présents dans l'étude");
-	System.out.println("Taper 3 pour ajouter une expérience");
-	System.out.println("Taper 4 pour afficher les expériences");
+	System.out.println("Taper 3 pour chercher un animal");
+	System.out.println("Taper 4 pour modifier un animal");
+	System.out.println("Taper 5 pour ajouter une expérience");
+	System.out.println("Taper 6 pour afficher les expériences");
+	System.out.println("Taper 7 pour créer une expérience");
     }
     
     public static String saisie_chaine ()
@@ -268,5 +270,4 @@ System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 
 	}
 	catch(IOException e){return 0;}
     }
-    
 }
