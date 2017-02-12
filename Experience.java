@@ -1,6 +1,7 @@
+package experiences;
 import java.util.*;
 
-abstract class Experience {
+abstract public class Experience {
 
     public static int num = 0;
     protected int nbJour = 0;
@@ -10,7 +11,7 @@ abstract class Experience {
     }
 
     public void affiche(){
-	;
+	System.out.println("n° Expérience : num");
     }
 
 }
