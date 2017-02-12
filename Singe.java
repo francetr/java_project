@@ -1,3 +1,5 @@
+package animaux;
+
 import java.util.*;
 
 public class Singe extends Animal{
