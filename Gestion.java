@@ -11,7 +11,8 @@ public class Gestion{
 	 */
 	Vector lesAnimaux = new Vector();
 	Vector lesExperiences = new Vector();
-
+	Vector lesCobayes = new Vector();
+	
 	Singe singe1 = new Singe("singe1", 50, 'M');
 	Singe singe2 = new Singe("singe3", 50, 'M');
 	Singe singe3 = new Singe("singe4", 25, 'F');
@@ -59,13 +60,13 @@ public class Gestion{
       Permet d'ajouter un animal en appelant fonctions ajout souris ou singe selon choix de l'utilisateur 
     */
     {
-	Animaux anim = new Animaux();				
+	Cobaye cob = new Cobaye();				
 	System.out.println("Quel est animal voulez-vous ajouter?\n 1 - Souris\n 2 - Singe");
         int rep = saisie_entier();
         String animal = "";
         switch(rep){
-	case 1 : anim.ajouterSouris(lesAnimaux); break;
-	case 2 : anim.ajouterSinge(lesAnimaux); break;
+	case 1 : cob.ajouterSouris(lesAnimaux); break;
+	case 2 : cob.ajouterSinge(lesAnimaux); break;
 	default : System.out.println("Ajout avorté"); break;
         }
     }
@@ -74,13 +75,13 @@ public class Gestion{
 	if (lesAnimaux.size() == 0){
 	    System.out.println("Ajouter d'abord des animaux");
 	}else{
-	    Animaux anim = new Animaux();
+	    Cobaye cob = new Cobaye();
             System.out.println("Quel est groupe d'animal voulez-vous afficher?\n 1 - Souris\n 2 - Singe\n 3 - Tout");
             int rep = saisie_entier();
             String animal = "";
             switch(rep){
-	    case 1 : anim.afficherSouris(lesAnimaux); break;
-	    case 2 : anim.afficherSinge(lesAnimaux); break;
+	    case 1 : cob.afficherSouris(lesAnimaux); break;
+	    case 2 : cob.afficherSinge(lesAnimaux); break;
 	    default : 
 		for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
 		    Animal ani = (Animal) e.nextElement();
@@ -135,7 +136,7 @@ public class Gestion{
 	int rep_2 = saisie_entier();
 	if (rep_2 ==1){
 		System.out.println("Donner le nouveau poids");
-		float poids = Animaux.saisie_float();
+		float poids = Cobaye.saisie_float();
 		ani.setPoids(poids);
 	    }
 	System.out.println("Voulez vous changer le statut? Taper 1 pour oui");
@@ -161,12 +162,12 @@ public class Gestion{
     */
     {
 	Pathway path = new Pathway();
+	Cobaye cob = new Cobaye();
 	System.out.println("Quelle expérience voulez-vous ajouter? \n 1 - Labyrinthe \n 2 - Nourriture \n 3 - Image\n");
 	int rep = saisie_entier();
 	String exp ="";
 	if (rep == 1){
-	    Animaux anim = new Animaux();
-	    anim.afficherSouris(lesAnimaux);
+	    cob.afficherSouris(lesAnimaux);
 	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
 	    int choix = saisie_entier();
 	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
@@ -177,8 +178,7 @@ public class Gestion{
 		}
 	    }
 	}else if (rep == 2){
-	    Animaux anim = new Animaux();
-	    anim.afficherSouris(lesAnimaux);
+	    cob.afficherSouris(lesAnimaux);
 	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
 	    int choix = saisie_entier();
 	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
@@ -189,8 +189,7 @@ public class Gestion{
 		}
 	    }
 	}else if (rep == 3){
-	    Animaux anim = new Animaux();
-	    anim.afficherSinge(lesAnimaux);
+	    cob.afficherSinge(lesAnimaux);
 	    System.out.println("Donner le num du singe a ajouter a l'expérience");
 	    int choix = saisie_entier();
 	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
@@ -212,7 +211,6 @@ public class Gestion{
 	    Pathway path = new Pathway();
 System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 2 - Labyrinthe\n 3 - Image\n 4 - Tout");
             int rep = saisie_entier();
-            String animal = "";
             switch(rep){
 	    case 1 : path.afficherNourriture(lesExperiences); break;
 	    case 2 : path.afficherLabyrinthe(lesExperiences); break;
@@ -242,7 +240,6 @@ System.out.println("Quelle expérience voulez-vous afficher?\n 1 - Nourriture\n 
 	System.out.println("Taper 4 pour modifier un animal");
 	System.out.println("Taper 5 pour ajouter une expérience");
 	System.out.println("Taper 6 pour afficher les expériences");
-	System.out.println("Taper 7 pour créer une expérience");
     }
     
     public static String saisie_chaine ()
