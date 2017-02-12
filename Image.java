@@ -55,16 +55,13 @@ public class Image extends Experience {
     }
     
     public void affiche(){
-	System.out.println("Expérience Image n°: " + numOrdre);
-	for (int i = 0; i < 5; i++){
-	    System.out.println("Essai n° : " +i );
-	    if (nbImageChoisie < 8){
-		System.out.println("Le sujet a trouvé la bonne image après " + nbImageChoisie + " tentatives, l'expérience est un " + succes + "\n" );
-	    }
-	    else{
-		System.out.println("Le sujet a trouvé la bonne image après " + nbImageChoisie + " tentatives, l'expérience est un " + succes + "\n" );
-	    }
+	System.out.println("Essai n° : " + essai );
+	if (nbImageChoisie < 8){
+	    System.out.println("Nombre images choisies : " + nbImageChoisie + "\n" + "Résultat : " + succes + "\n" );
+	}
+	else{
+	    System.out.println("Nombre images choisies : " + nbImageChoisie + "\n" + "Résultat : " + succes + "\n" );
 	}
     }
-    
 }
+    
