@@ -1,55 +1,42 @@
 package experiences;
 import java.util.*;
-public class Nourriture extends Experience{
+public class Labyrinthe extends Experience {
 
-    protected int nbCachette = 5;
-    protected int nbVisite = 0;
-    protected String succes = null;
+    protected int temps;
     public static int num = 0;
     protected int numOrdre = 0;
-	
-    public Nourriture(){
+
+    
+    public Labyrinthe(){
 	num++;
 	numOrdre = num;
     }
-
-    public Nourriture(String s, int n){
+    
+    public Labyrinthe(int tps){
 	num++;
 	numOrdre = num;
-	nbVisite = n;
-	succes = s;
+	temps = tps;
     }
 
-    public int getNbVisite(){
-	return nbVisite;
+    public int getTemps(){
+	return temps;
     }
 
-    public String getSucces(){
-	return succes;
+    public void setTemps(int tps){
+	temps = tps;
     }
 
-    public int getNumOrdre(){  // avoir le numéros de l'exp nourriture lors de sa création
+    public int getNumOrdre(){  // avoir le numéros de l'exp lab lors de sa création
 	return numOrdre;
     }
 
-    public int getNum(){  // avoir nb tot d'exp nourriture
+    public int getNum(){  // avoir nb tot d'exp lab
 	return num;
-    }
-
-    public void setNbVisite(int v){
-	nbVisite = v;
-    }
-
-    public void setNbVisite(String s){
-	succes = s;
     }
     
     public void affiche(){
-	if (succes.equals("succes")){
-	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette avant de trouver la nourriture\n");
-	}
-	else{
-	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette sans trouver la nourriture\n");
-	}
+	System.out.println("Experience du labyrinthe n° " + numOrdre  + "\ntemps du parcous (sec) : " + temps);
     }
+
+    
 }
