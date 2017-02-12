@@ -58,12 +58,12 @@ public class Pathway{
 	    System.out.println("Combien d'images le singe "+ sin.getId() +" a-t'il choisi?");
 	    int nb = saisie_entier();
 	    if (nb < 8){
-		System.out.println("A l'essai n° " + (i+1) + " l'experience du singe "+ sin.getId() + " est un succès\n");
+		System.out.println("Essai n° : " + (i+1) + "Singe : "+ sin.getId() + "Résultat : succès\n");
 		succes = "succes";
 	    }
 	    else{
-		System.out.println("A l'essai n° "+ (i+1) +" l'experience du singe "+ sin.getId() + " est un echec\n");
-		succes = "succes";
+		System.out.println("Essai n° "+ (i+1) +"Singe : "+ sin.getId() + "Résultat : échec\n");
+		succes = "échec";
 	    }		
 	    Image img = new Image(succes, nb);
 	    img.setEssai(i+1);
@@ -73,8 +73,8 @@ public class Pathway{
 
     public static void afficherLabyrinthe(Vector lesLabyrinthes){
 	/*
-	  Affiche la liste de toutes les sourisexp labyrinthes
-	  Pour cela, parcourt d'abord le vecteur animal puis parcourt les vecteurs contenus dans le vecteur animal pour afficher leurs contenus
+	  Affiche la liste de toutes les exp labyrinthes
+	  Pour cela, parcourt d'abord le vecteur contenant les exp labyrinthes
 	*/
 	if (lesLabyrinthes.size() == 0){
 	    System.out.println("Ajouter d'abord une expérience labyrinthe");
@@ -90,8 +90,8 @@ public class Pathway{
     
     public static void afficherNourriture(Vector lesNourritures){
 	/*
-	  Affiche la liste de toutes les souris
-	  Pour cela, parcourt d'abord le vecteur animal puis parcourt les vecteurs contenus dans le vecteur animal pour afficher leurs contenus
+	  Affiche la liste de toutes les exp nourriture
+	  Pour cela, parcourt d'abord le vecteur contenant les exp nourriture
 	*/
 	if (lesNourritures.size() == 0){
 	    System.out.println("Ajouter d'abord une expérience Nourriture");
@@ -108,7 +108,7 @@ public class Pathway{
     public static void afficherImage(Vector lesImages){
 	/*
 	  Affiche la liste de toutes les images
-	  Pour cela, parcourt d'abord le vecteur animal puis parcourt les vecteurs contenus dans le vecteur animal pour afficher leurs contenus
+	  Pour cela, parcourt d'abord le vecteur contenant les exp images
 	*/
 	if (lesImages.size() == 0){
 	    System.out.println("ajouter d'abord des singes");
