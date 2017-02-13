@@ -2,20 +2,14 @@ package experiences;
 import java.util.*;
 public class Labyrinthe extends Experience {
 
-    protected int temps;
+    private int temps;
     public static int num = 0;
-    protected int numOrdre = 0;
+    private int numLabyrinthe = 0;
 
     
     public Labyrinthe(){
-	num++;
-	numOrdre = num;
-    }
-    
-    public Labyrinthe(int tps){
-	num++;
-	numOrdre = num;
-	temps = tps;
+	num ++;
+	numLabyrinthe = num;
     }
 
     public int getTemps(){
@@ -27,7 +21,7 @@ public class Labyrinthe extends Experience {
     }
 
     public int getNumOrdre(){  // avoir le numéros de l'exp lab lors de sa création
-	return numOrdre;
+	return numLabyrinthe;
     }
 
     public int getNum(){  // avoir nb tot d'exp lab
@@ -35,8 +29,7 @@ public class Labyrinthe extends Experience {
     }
     
     public void affiche(){
-	System.out.println("Experience du labyrinthe n° " + numOrdre  + "\ntemps du parcous (sec) : " + temps);
-    }
-
-    
+	super.affiche();
+	System.out.println("Experience du labyrinthe n° " + numLabyrinthe  + "\ntemps du parcous (sec) : " + temps + "\n");
+    }    
 }
