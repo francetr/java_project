@@ -6,11 +6,12 @@ public class Nourriture extends Experience{
     private int nbVisite = 0;
     private String succes = null;
     private int num = 0;
-    private int numImage = 0;
+    private int numNourriture = 0; // num de création exp Vourr
 	
     public Nourriture(){
+	super();
 	num ++;
-	numImage = num;
+	numNourriture = num;
     }
 
     public int getNbVisite(){
@@ -21,8 +22,8 @@ public class Nourriture extends Experience{
 	return succes;
     }
 
-    public int getNumOrdre(){  // avoir le numéros de l'exp nourriture lors de sa création
-	return numOrdre;
+    public int getNumNourriture(){  // avoir le numéros de l'exp nourriture lors de sa création
+	return numNourriture;
     }
 
     public int getNum(){  // avoir nb tot d'exp nourriture
@@ -39,7 +40,7 @@ public class Nourriture extends Experience{
     
     public void affiche(){
 	super.affiche();
-	System.out.println("Experience de nourriture n° : " + numImage);
+	System.out.println("Experience de nourriture n° : " + numNourriture);
 	if (succes.equals("succes")){
 	    System.out.println("Nombre de visites : " + nbVisite + "\n" + "Résultat : "+ succes);
 	}
