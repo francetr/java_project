@@ -1,5 +1,6 @@
 import experiences.*; // import paquetage contenant les expériences
 import animaux.*;  // import paquetage contenant les animaux
+import protocole.*; // import paquetage contenant protocole des exp
 import java.util.*;
 import java.io.*;
 
@@ -46,9 +47,10 @@ public class Gestion{
 	
 	Labyrinthe lab = new Labyrinthe();
 	lab.setTemps(300);
-	Cobaye cob2 = new Cobaye(singe1, lab);
+	Cobaye cob2 = new Cobaye(souris2, lab);
 	lesCobayes.addElement(cob1);
 	lesCobayes.addElement(cob2);
+	cob1.affiche();
 	
 	while (true){
 	    afficheMenu();
@@ -180,27 +182,30 @@ public class Gestion{
 	    path.afficherSouris(lesAnimaux);
 	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
 	    int choix = saisie_entier();
-	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-		Animal item = (Animal) e.nextElement();
-		if (item.getNumOrdre() == choix){
-		    path.ajouterLabyrinthe(lesCobayes, item);
-		    return;
+	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){ // parcourt vecteur contenant animaux
+		for (Enumeration e2 = lesCobayes.elements(); e2.hasMoreElements();){ // parcourt vecteur contenant cobayes
+		    Cobaye item2 =(Cobaye) e2.nextElement();
+		    Animal item = (Animal) e.nextElement();
+		    if (item instanceof Souris && item.getNumOrdre() == choix && item.getId() != item2.getId()){
+			path.ajouterLabyrinthe(lesCobayes, item);
+			return;
+		    }
 		}
 	    }
-	}else if(rep == 2){
+	    
+	}
+	else if(rep == 2){
 	    path.afficherSouris(lesAnimaux);
 	    System.out.println("Donner le num de la souris a ajouter a l'expérience");
 	    int choix = saisie_entier();
 	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-		Animal item = (Animal) e.nextElement();
-		if (item.getNumOrdre() == choix){
-		    if(item instanceof Souris){
+		for (Enumeration e2 = lesCobayes.elements(); e2.hasMoreElements();){ // parcourt vecteur contenant cobayes
+		    Cobaye item2 =(Cobaye) e2.nextElement();
+		    Animal item = (Animal) e.nextElement();
+		    if (item instanceof Souris && item.getNumOrdre() == choix && item.getId() != item2.getId()){
 			path.ajouterNourriture(lesCobayes, item);
 			return;
-		    }else{
-			System.out.println("Choisissez une souris");
 		    }
-
 		}
 	    }
 	}else if (rep == 3){
@@ -208,17 +213,20 @@ public class Gestion{
 	    System.out.println("Donner le num du singe a ajouter a l'expérience");
 	    int choix = saisie_entier();
 	    for (Enumeration e = lesAnimaux.elements(); e.hasMoreElements();){
-		Animal item = (Animal) e.nextElement();
-		if (item.getNumOrdre() == choix){
-		    path.ajouterImage(lesCobayes, item);
-		    return;
+		for (Enumeration e2 = lesCobayes.elements(); e2.hasMoreElements();){ // parcourt vecteur contenant cobayes
+		    Cobaye item2 =(Cobaye) e2.nextElement();
+		    Animal item = (Animal) e.nextElement();
+		    if (item instanceof Singe && item.getNumOrdre() == choix && item.getId() != item2.getId()){
+			path.ajouterNourriture(lesCobayes, item);
+			return;
+		    }
 		}
 	    }
 	}else{
 	    System.out.println("Ajout d'expérience avorté");
-	}       
+	    return;
+	}
     }
-
     /*
     public static void repeterExperience(Vector lesExperiences){
     \/*
