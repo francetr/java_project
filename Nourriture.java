@@ -1,54 +1,66 @@
 package experiences;
 import java.util.*;
-public class Nourriture extends Experience{
-
-    protected int nbCachette = 5;
-    protected int nbVisite = 0;
-    protected String succes = null;
+public class Image extends Experience {
+    
+    protected int nbImageChoisie = 0;
+    protected String succes = "";
+    protected int  numOrdre = 0;
+    protected int  essai = 0;
     public static int num = 0;
-    protected int numOrdre = 0;
-	
-    public Nourriture(){
+    
+    public Image(){
 	super();
+	essai = 1;
     }
 
-    public Nourriture(String s, int n){
+    public Image(String chaine, int choix){
 	super();
-	nbVisite = n;
-	succes = s;
+	nbImageChoisie = choix;
+	succes = chaine;
+	essai = 1;
     }
 
-    public int getNbVisite(){
-	return nbVisite;
+    public int getNbImageChoisie(){
+	return nbImageChoisie;
     }
-
-    public String getSucces(){
-	return succes;
-    }
-
-    public int getNumOrdre(){  // avoir le numéros de l'exp nourriture lors de sa création
+    
+    public int getNumOrdre(){  // avoir le numéros de l'exp Image lors de sa création
 	return numOrdre;
     }
 
-    public int getNum(){  // avoir nb tot d'exp nourriture
+    public int getNum(){  // avoir nb tot d'exp Image
 	return num;
     }
 
-    public void setNbVisite(int v){
-	nbVisite = v;
+    public String getSucces(){ // succes sous forme de String, a voir si on peut transformer en booléan
+	return succes;
     }
 
-    public void setSucces(String s){
-	succes = s;
+    public int getEssai(){
+	return essai;
+    }
+    
+    public void setNbImageChoisie(int choix){
+	nbImageChoisie = choix;
+    }
+
+    public void setSucces(String succes){
+	this.succes = succes;
+    }
+    
+    public void setEssai(int essai){
+	this.essai = essai;
     }
     
     public void affiche(){
 	super().affiche();
-	if (succes.equals("succes")){
-	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette avant de trouver la nourriture\n");
+	System.out.println("Essai n° : " + essai );
+	if (nbImageChoisie < 8){
+	    System.out.println("Nombre images choisies : " + nbImageChoisie + "\n" + "Résultat : " + succes + "\n" );
 	}
 	else{
-	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette sans trouver la nourriture\n");
+	    System.out.println("Nombre images choisies : " + nbImageChoisie + "\n" + "Résultat : " + succes + "\n" );
 	}
     }
 }
+    
