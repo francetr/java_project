@@ -44,10 +44,10 @@ public class Image extends Experience {
     public void affiche(){
 	super.affiche();
 	if (nbImage < 8){
-	    System.out.println("Nombre images choisies : " + nbImage + "\n" + "Résultat : " + succes + "\n" );
+	    System.out.println("Nombre images choisies : " + nbImage + "\n" + "Résultat : " + succes);
 	}
 	else{
-	    System.out.println("Nombre images choisies : " + nbImage + "\n" + "Résultat : " + succes + "\n" );
+	    System.out.println("Nombre images choisies : " + nbImage + "\n" + "Résultat : " + succes);
 	}
     }
 }
