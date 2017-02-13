@@ -1,5 +1,6 @@
-package experiences;
+package protocole;
 
+import experiences.*;
 import animaux.*;
 import java.util.*;
 import java.io.*;
@@ -16,15 +17,17 @@ public class Cobaye{
     private Experience experience;
     private int jour = 1;
     
-    public Cobaye(){
-	;
-    }
-    
+    public Cobaye(){;}
+
     public Cobaye(Animal anim, Experience exp){
 	animal = anim;
-	experience = exp;
+	experience = exp;	
     }
 
+    public String getId(){
+	return animal.getId();
+    }
+    
     public Animal getAnimal(){
 	return animal;
     }
