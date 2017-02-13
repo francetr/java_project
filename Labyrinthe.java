@@ -1,5 +1,5 @@
 package experiences;
-import java.util.*;
+
 public class Labyrinthe extends Experience {
 
     private int temps;
@@ -30,6 +30,6 @@ public class Labyrinthe extends Experience {
     
     public void affiche(){
 	super.affiche();
-	System.out.println("Experience du labyrinthe n° " + numLabyrinthe  + "\ntemps du parcous (sec) : " + temps + "\n");
+	System.out.println("Experience du labyrinthe n° " + numLabyrinthe  + "\nTemps du parcous (sec) : " + temps);
     }    
 }
