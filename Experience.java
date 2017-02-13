@@ -4,18 +4,24 @@ import java.util.*;
 abstract public class Experience {
 
     public static int num = 0;
-    protected int numOrdre = 0;
-    protected int nbJour = 0;
+    protected int numExp = 0;
     
     public Experience(){
-	nbJour++;
 	num++;
-	numOrdre = num;
+	numExp = num;
     }
 
+
+    public int getNumExp(){
+	return numExp;
+    }
+
+    public void setNumExp(int n){
+	numExp = n;
+    }
+    
+    
     public void affiche(){
-	System.out.println("n° Expérience :" + numOrdre);
-	System.out.println("Jour : " + nbJour);
+	System.out.println("Expérience n° : " + numExp);
     }
-
 }
