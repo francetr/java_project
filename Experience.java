@@ -8,12 +8,14 @@ abstract public class Experience {
     protected int nbJour = 0;
     
     public Experience(){
+	nbJour++;
 	num++;
 	numOrdre = num;
     }
 
     public void affiche(){
 	System.out.println("n° Expérience :" + numOrdre);
+	System.out.println("Jour : " + nbJour);
     }
 
 }
