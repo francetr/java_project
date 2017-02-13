@@ -55,7 +55,9 @@ Classe Pathway
 - vecteur avec exp image
 - vecteur avec exp labyrinthe
 
-6 méthodes :
+10 méthodes :
+- afficher souris/singe
+-ajouter souris/singe
 - ajouter exp(image/labyrinthe/nourriture)
 - afficher exp(image/labyrinthe/nourriture)
 
