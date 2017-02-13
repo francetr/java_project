@@ -1,5 +1,6 @@
+package experiences;
+
 import animaux.*;
-import experiences.*;
 import java.util.*;
 import java.io.*;
 
