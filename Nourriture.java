@@ -9,13 +9,11 @@ public class Nourriture extends Experience{
     protected int numOrdre = 0;
 	
     public Nourriture(){
-	num++;
-	numOrdre = num;
+	super();
     }
 
     public Nourriture(String s, int n){
-	num++;
-	numOrdre = num;
+	super();
 	nbVisite = n;
 	succes = s;
     }
@@ -45,6 +43,7 @@ public class Nourriture extends Experience{
     }
     
     public void affiche(){
+	super().affiche();
 	if (succes.equals("succes")){
 	    System.out.println("Experience de nourriture" + "\nL'experience n° " + numOrdre +" est un "+ succes + ", le sujet a visite " + nbVisite + " cachette avant de trouver la nourriture\n");
 	}
