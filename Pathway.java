@@ -18,8 +18,8 @@ public class Pathway{
 	int tps = saisie_entier();
 	Labyrinthe lab = new Labyrinthe();
 	lab.setTemps(tps);
-	lesLabyrinthes.addElement(lab);
 	Cobaye cob = new Cobaye(sour, lab);
+	lesLabyrinthes.addElement(cob);
     }
     
     public static void ajouterNourriture(Vector lesNourritures, Animal sour){
@@ -47,8 +47,8 @@ public class Pathway{
 	    Nourriture nour = new Nourriture();
 	    nour.setSucces(succes);  //définit résultat pour cette expérience
 	    nour.setNbVisite(nb); // définit nb visite pour cette expérience
-	    lesNourritures.addElement(nour);
-	    Cobaye cob = new Cobaye(sour, nour);
+	    Cobaye cob = new Cobaye(sour,nour);
+	    lesNourritures.addElement(sour);
 	}
     }
     
@@ -56,30 +56,29 @@ public class Pathway{
 	/*
 	  Permet d'ajouter un objet image au vecteur contenant les images
 	*/
+	Image img = new Image();
 	String succes = "";
 	int nb = 0;
 	int j = 1; // cpt pour répéter 5 fois laa même oprétion
 	for (int i = 0 ; i < 5; i++){
 	    while(j <= 5){
+
 		System.out.println("Combien d'images le singe "+ sin.getId() +" a-t'il choisi?");
 		nb = saisie_entier();
 		if (nb < 8){
-		    System.out.println("Essai n° : " + j + "\n" + "Singe : " + sin.getId() + "\n" + "Résultat : succès\n");
 		    succes = "succes";
+		    img.setNbImage(nb);
+		    img.setSucces(succes);
 		}
 		else{
-		    System.out.println("Essai n° "+ j+ "\n"  + "Singe : "+ sin.getId()+ "\n" + "Résultat : échec\n");
 		    succes = "échec";
+		    img.setNbImage(nb);
+		    img.setSucces(succes);
 		}
 		j++;
-	    }
-	    
-	    Image img = new Image();
-	    img.setSucces(succes);
-	    img.setNbImage(nb);
-	    //img.setEssai(i+1);
-	    lesImages.addElement(img);
+	    }	    
 	    Cobaye cob = new Cobaye(sin, img);
+	    lesImages.addElement(cob);
 	}
     }
 
@@ -93,9 +92,9 @@ public class Pathway{
 	}
 	else{
 	    for (Enumeration e = lesLabyrinthes.elements(); e.hasMoreElements();){  //boucle de parcours des animaux
-		Experience exp = (Experience) e.nextElement();
-		if (exp instanceof Labyrinthe){
-		    exp.affiche();}
+		Cobaye cob = (Cobaye) e.nextElement();
+		if (cob.getExperience() instanceof Labyrinthe){
+		    cob.affiche();}
 	    }
 	}
     }
@@ -107,15 +106,17 @@ public class Pathway{
 	*/
 	if (lesNourritures.size() == 0){
 	    System.out.println("Ajouter d'abord une expérience Nourriture");
-	}
-	else{
+	}else{
 	    for (Enumeration e = lesNourritures.elements(); e.hasMoreElements();){  //boucle de parcours des exp Nourritures
-		Experience exp = (Experience) e.nextElement();
-		if (exp instanceof Nourriture){
-		    exp.affiche();}
+		Cobaye cob = (Cobaye) e.nextElement();
+		if (cob.getExperience() instanceof Nourriture){
+		    cob.affiche();
+		}
 	    }
 	}
     }
+
+
     
     public static void afficherImage(Vector lesImages){
 	/*
@@ -127,14 +128,97 @@ public class Pathway{
 	}
 	else{
 	    for (Enumeration e = lesImages.elements(); e.hasMoreElements();){  //boucle de parcours des exp Nourritures
-		Experience exp = (Experience) e.nextElement();
-		if (exp instanceof Image){
-		    exp.affiche();}
+		Cobaye cob = (Cobaye) e.nextElement();
+		if (cob.getExperience() instanceof Image){
+		    cob.affiche();
+		}
 	    }
 	}
     }
 
+
+        
+    public static Vector ajouterSouris(Vector lesSouris){
+	/*
+	  Permet d'ajouter un objet souris au vecteur contenant les animaux
+	*/
+	System.out.println("Donner un nom à la souris");
+	String nom = saisie_chaine();
+	System.out.println("Donner un poids à la souris " + nom);
+	float poids = saisie_float();
+	char sexe = 'V';
+	while(sexe == 'V'){
+	    System.out.println("Quel est son sexe? \n 1 - Femelle \n 2 - Mâle");
+	    int rep = saisie_entier();
+	    switch(rep){
+	    case 1 : sexe = 'F';break;
+	    case 2 : sexe = 'M';break;
+	    default : System.out.println("Entrer 1 ou 2");
+	    }
+	}
+	Souris souris = new Souris(nom, poids, sexe);
+	lesSouris.addElement(souris);
+	return lesSouris;
+    }
     
+    public static Vector ajouterSinge(Vector lesSinges){
+	/*
+	  Permet d'ajouter un objet singe au vecteur contenant les animaux
+	*/
+	System.out.println("Donner un nom au singe");
+	String nom = saisie_chaine();
+	System.out.println("Donner un poids au singe " + nom);
+	float poids = saisie_float();
+	char sexe = 'V';
+	while(sexe == 'V'){
+	    System.out.println("Quel est son sexe? \n 1 - Femelle \n 2 - Mâle");
+	    int rep = saisie_entier();
+	    switch(rep){
+	    case 1 : sexe = 'F';break;
+	    case 2 : sexe = 'M';break;
+	    default : System.out.println("entrer 1 ou 2");
+	    }
+	}
+	Singe singe = new Singe(nom, poids, sexe);
+	lesSinges.add(singe);
+	return lesSinges;
+    }
+    
+    public static void afficherSouris(Vector lesSouris){
+	/*
+	  Affiche la liste de toutes les souris
+	  Pour cela, parcourt d'abord le vecteur contenant tous les animaux puis regarde si l'instance correspond à la classe souris.
+	*/
+	if (lesSouris.size() == 0){
+	    System.out.println("ajouter d'abord des souris");
+	}
+	else{
+	    for (Enumeration e = lesSouris.elements(); e.hasMoreElements();){  //boucle de parcours des animaux
+		Animal sour = (Animal) e.nextElement();
+		if(sour instanceof Souris){
+		sour.affiche();
+		}
+	    }	    
+	}
+    }
+    
+    public static void afficherSinge(Vector lesSinges){
+	/*
+	  Affiche la liste de tous les singes
+	  Pour cela, parcourt d'abord le vecteur contenant tous les animaux puis regarde si l'instance correspond à la classe singe.
+	*/
+	if (lesSinges.size() == 0){
+	    System.out.println("Ajouter d'abord des souris");
+	}
+	else{
+	    for (Enumeration e = lesSinges.elements(); e.hasMoreElements();){  //boucle de parcours des animaux
+		Animal sin = (Animal) e.nextElement();
+		if (sin instanceof Singe){
+		    sin.affiche();}
+	    }
+	}
+    }
+
     public static String saisie_chaine ()
     {
 	try {
@@ -148,14 +232,26 @@ public class Pathway{
 	    return null;
 	}
     }
-    
-    public static int saisie_entier ()
+
+        public static int saisie_entier ()
     {
 	try{
 	    BufferedReader buff = new BufferedReader
 		(new InputStreamReader(System.in));
 	    String chaine=buff.readLine();
-	    int num = Integer.parseInt(chaine);
+	    Integer num = Integer.parseInt(chaine);
+	    return num;
+	}
+	catch(IOException e){return 0;}
+    }
+    
+    public static float saisie_float () // saisie de nombre floatant pour le poids
+    {
+	try{
+	    BufferedReader buff = new BufferedReader
+		(new InputStreamReader(System.in));
+	    String chaine=buff.readLine();
+	    Float num = Float.parseFloat(chaine);
 	    return num;
 	}
 	catch(IOException e){return 0;}
