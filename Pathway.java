@@ -8,7 +8,7 @@ public class Pathway{
     private Vector lesNourritures = new Vector();
     private Vector lesImages = new Vector();
     private Vector lesLabyrinthes = new Vector();
-    
+    private int essai = 0;
     
     public static void ajouterLabyrinthe(Vector lesLabyrinthes, Animal sour){
 	/*
@@ -16,7 +16,8 @@ public class Pathway{
 	*/
 	System.out.println("Au bout de combien de temps (sec) le sujet a-t'il trouvé la sortie?");
 	int tps = saisie_entier();
-	Labyrinthe lab = new Labyrinthe(tps);
+	Labyrinthe lab = new Labyrinthe();
+	lab.setTemps(tps);
 	lesLabyrinthes.addElement(lab);
 	Cobaye cob = new Cobaye(sour, lab);
     }
@@ -55,20 +56,28 @@ public class Pathway{
 	/*
 	  Permet d'ajouter un objet image au vecteur contenant les images
 	*/
+	String succes = "";
+	int nb = 0;
+	int j = 1; // cpt pour répéter 5 fois laa même oprétion
 	for (int i = 0 ; i < 5; i++){
-	    String succes = "";
-	    System.out.println("Combien d'images le singe "+ sin.getId() +" a-t'il choisi?");
-	    int nb = saisie_entier();
-	    if (nb < 8){
-		System.out.println("Essai n° : " + (i+1) + "\n" + "Singe : " + sin.getId() + "\n" + "Résultat : succès\n");
-		succes = "succes";
+	    while(j <= 5){
+		System.out.println("Combien d'images le singe "+ sin.getId() +" a-t'il choisi?");
+		nb = saisie_entier();
+		if (nb < 8){
+		    System.out.println("Essai n° : " + j + "\n" + "Singe : " + sin.getId() + "\n" + "Résultat : succès\n");
+		    succes = "succes";
+		}
+		else{
+		    System.out.println("Essai n° "+ j+ "\n"  + "Singe : "+ sin.getId()+ "\n" + "Résultat : échec\n");
+		    succes = "échec";
+		}
+		j++;
 	    }
-	    else{
-		System.out.println("Essai n° "+ (i+1)+ "\n"  + "Singe : "+ sin.getId()+ "\n" + "Résultat : échec\n");
-		succes = "échec";
-	    }		
-	    Image img = new Image(succes, nb);
-	    img.setEssai(i+1);
+	    
+	    Image img = new Image();
+	    img.setSucces(succes);
+	    img.setNbImage(nb);
+	    //img.setEssai(i+1);
 	    lesImages.addElement(img);
 	    Cobaye cob = new Cobaye(sin, img);
 	}
@@ -100,7 +109,7 @@ public class Pathway{
 	    System.out.println("Ajouter d'abord une expérience Nourriture");
 	}
 	else{
-	    for (Enumeration e = lesNourritures.elements(); e.hasMoreElements();){  //boucle de parcours des animaux
+	    for (Enumeration e = lesNourritures.elements(); e.hasMoreElements();){  //boucle de parcours des exp Nourritures
 		Experience exp = (Experience) e.nextElement();
 		if (exp instanceof Nourriture){
 		    exp.affiche();}
@@ -117,13 +126,14 @@ public class Pathway{
 	    System.out.println("ajouter d'abord des singes");
 	}
 	else{
-	    for (Enumeration e = lesImages.elements(); e.hasMoreElements();){  //boucle de parcours des animaux
+	    for (Enumeration e = lesImages.elements(); e.hasMoreElements();){  //boucle de parcours des exp Nourritures
 		Experience exp = (Experience) e.nextElement();
 		if (exp instanceof Image){
 		    exp.affiche();}
 	    }
 	}
     }
+
     
     public static String saisie_chaine ()
     {
