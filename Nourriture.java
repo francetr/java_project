@@ -1,8 +1,7 @@
 package experiences;
-import java.util.*;
 public class Nourriture extends Experience{
 
-    private int nbCachette = 5;
+
     private int nbVisite = 0;
     private String succes = null;
     private int num = 0;
@@ -45,7 +44,7 @@ public class Nourriture extends Experience{
 	    System.out.println("Nombre de visites : " + nbVisite + "\n" + "Résultat : "+ succes);
 	}
 	else{
-	    System.out.println("Nombre de visittes : " + nbVisite +"Résultat : "+ succes+ "\n");
+	    System.out.println("Nombre de visites : " + nbVisite +"Résultat : "+ succes);
 	}
     }
 }
