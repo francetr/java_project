@@ -9,14 +9,12 @@ public class Image extends Experience {
     public static int num = 0;
     
     public Image(){
-	num++;
-	numOrdre = num;
+	super();
 	essai = 1;
     }
 
     public Image(String chaine, int choix){
-	num++;
-	numOrdre = num;
+	super();
 	nbImageChoisie = choix;
 	succes = chaine;
 	essai = 1;
