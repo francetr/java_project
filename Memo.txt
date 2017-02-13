@@ -1,7 +1,7 @@
 2 packages, 10 classes :
 - dossier racine
    - 1 classe gestion : permettant de piloter les expériences
-   - 1 classe Cobaye gère animaux des expériences(ajouter souris/singe et afficher souris/singe)
+   (ajouter souris/singe et afficher souris/singe)
    
 - package animaux :
    - 1 classe mère animal
@@ -11,7 +11,8 @@
 - package experiences :
    - 1 classe mère expérience qui va permettre de jouer sur les tests 
    - 3 classes filles (Labyrinthe, Nourriture et Image) héritant de la classe Expérience
-   - 1 classe Pathway gérant les expériences (ajout/affichage selon expérience)
+   - 1 classe Pathway gérant les expériences et l'ajout/affichage d'animaux (ajout/affichage selon expérience)
+   - 1 classe Cobaye gère animaux des expériences
 
 
 Class Gestion contenant le menu interactif
