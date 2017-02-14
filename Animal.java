@@ -10,7 +10,8 @@ abstract public class Animal{
     protected String vivant;
     protected int numOrdre = 0;
     public static int num = 0;
-
+    protected String stress ="stresse";
+    
     public Animal() {
 	num++;
 	numOrdre = num;
@@ -27,6 +28,14 @@ abstract public class Animal{
 	poids = nb;
 	sexe = sx;
 	vivant = "vivant";
+    }
+
+    public String getStress(){
+	return stress;
+    }
+
+    public void setStress(String str){
+	stress= str;
     }
     
     public String getId(){
