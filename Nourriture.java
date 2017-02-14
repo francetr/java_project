@@ -17,6 +17,7 @@ public class Nourriture extends Experience{
 	return nbVisite;
     }
 
+    
     public String getSucces(){
 	return succes;
     }
