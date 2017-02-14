@@ -1,54 +1,35 @@
 package experiences;
-import java.util.*;
-public class Image extends Experience {
-    
-    protected int nbImage = 0;
-    protected String succes = "";
-    protected int numImage = 0;
+
+public class Labyrinthe extends Experience {
+
+    private int temps;
     public static int num = 0;
+    private int numLabyrinthe = 0;
+
     
-    public Image(){
-	super();
-	num++;
-	numImage = num;
+    public Labyrinthe(){
+	num ++;
+	numLabyrinthe = num;
     }
 
-    public int getNbImage(){
-	return nbImage;
-    }
-    
-    public int getNumImage(){  // avoir le numéros de l'exp Image lors de sa création
-	return numImage;
+    public int getTemps(){
+	return temps;
     }
 
-    public int getNum(){  // avoir nb tot d'exp Image
+    public void setTemps(int tps){
+	temps = tps;
+    }
+
+    public int getNumOrdre(){  // avoir le numéros de l'exp lab lors de sa création
+	return numLabyrinthe;
+    }
+
+    public int getNum(){  // avoir nb tot d'exp lab
 	return num;
     }
-
-    public String getSucces(){ // succes sous forme de String, a voir si on peut transformer en booléan
-	return succes;
-    }
     
-    public void setNbImage(int choix){
-	nbImage = choix;
-    }
-
-    public void setNumImage(int choix){
-	numImage = choix;
-    }
-    
-    public void setSucces(String succes){
-	this.succes = succes;
-    }
-       
     public void affiche(){
 	super.affiche();
-	if (nbImage < 8){
-	    System.out.println("Nombre images choisies : " + nbImage + "\n" + "Résultat : " + succes);
-	}
-	else{
-	    System.out.println("Nombre images choisies : " + nbImage + "\n" + "Résultat : " + succes);
-	}
-    }
+	System.out.println("Experience du labyrinthe n° " + numLabyrinthe  + "\nTemps du parcous (sec) : " + temps);
+    }    
 }
-    
