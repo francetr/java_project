@@ -11,7 +11,6 @@ abstract public class Experience {
 	numExp = num;
     }
 
-
     public int getNumExp(){
 	return numExp;
     }
@@ -19,7 +18,6 @@ abstract public class Experience {
     public void setNumExp(int n){
 	numExp = n;
     }
-    
     
     public void affiche(){
 	System.out.println("Expérience n° : " + numExp);
