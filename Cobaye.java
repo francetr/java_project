@@ -11,19 +11,26 @@ public class Cobaye{
       Constructeurs dépend du type d'animal sélectionner et de l'expérience
     */
 
-    private static Vector lesSouris = new Vector();
-    private static Vector lesSinges = new Vector();
     private Animal animal;
     private Experience experience;
+    private Labyrinthe labyrinthe;
+    private Nourriture nourriture;
+    private Image image;
+    private Test test;
     private int jour = 1;
     
     public Cobaye(){;}
 
     public Cobaye(Animal anim, Experience exp){
 	animal = anim;
-	experience = exp;	
+	experience = exp;
     }
 
+    public int getNumExp(){
+	return experience.getNumExp();
+    }
+
+    // Méthodes pour avoir/modifier info sur l'animal
     public String getId(){
 	return animal.getId();
     }
@@ -31,23 +38,58 @@ public class Cobaye{
     public Animal getAnimal(){
 	return animal;
     }
+    
+    public String getStatut(){
+	return animal.getStatut();
+    }
 
-    public Experience getExperience(){
-	return experience;
+    public void setStatut(String st){
+	animal.setStatut(st);
     }
 
     public void setAnimal(Animal anim){
 	animal = anim;
     }
 
-    public void setExperience(Experience exp){
-	experience = exp;
+    public String getStress(){
+	return animal.getStress();
     }
 
-    public void affiche(){
-	System.out.println("Sujet : " + animal.getId());
-	System.out.println("Jour : "+ jour);
-	experience.affiche();
-	System.out.println("\n");
+    public void setStress(String str){
+	animal.setStress(str);
+    }
+    
+    // Méthodes pour avoir/modifier infos sur exp
+    public Experience getExp(){
+	return experience;
+    }
+
+    public void setExp(Experience exp){
+	experience = exp;
+    }
+    
+    // Méthodes pour exp Labyrinthe
+    public void setTemps(int tps){ // si exp labyrinthe
+	labyrinthe.setTemps(tps);
+    }
+
+    public int getTemps(){ // si exp lab
+	return labyrinthe.getTemps();
+    }
+    
+    // Méthodes pour exp Nourritures
+    public void setNbVisite(int nb){
+	nourriture.setNbVisite(nb);
+    }
+
+    public void setSucces(String str){
+	nourriture.setSucces(str);
+    }
+
+    public String getSucces(){
+	return nourriture.getSucces();
     }
 }
+
+
+
